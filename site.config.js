@@ -7,9 +7,9 @@ module.exports = {
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Transitive Bullshit',
+  name: '菜饼的技术博客',
   domain: 'www.notion.so/frankcbliu/6a76fdd9ec6d4ae2855aa790d620eec4',
-  author: 'Travis Fischer',
+  author: '菜饼',
 
   // open graph metadata (optional)
   description: 'Example site description',
@@ -18,7 +18,7 @@ module.exports = {
 
   // social usernames (optional)
   twitter: 'transitive_bs',
-  github: 'transitive-bullshit',
+  github: 'frankcbliu',
   linkedin: 'fisch2',
 
   // default notion icon and cover images for site-wide consistency (optional)
@@ -47,5 +47,7 @@ module.exports = {
   //   '/foo': '067dd719a912471ea9a3ac10710e7fdf',
   //   '/bar': '0be6efce9daf42688f65c76b89f8eb27'
   // }
-  pageUrlOverrides: null
+  pageUrlOverrides: {
+    '/os': 'ff8a4877c04f42eda0d050547c117ea5'
+  }
 }
