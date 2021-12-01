@@ -8,7 +8,7 @@ module.exports = {
 
   // basic site info (required)
   name: 'Transitive Bullshit',
-  domain: 'https://www.notion.so/frankcbliu/6a76fdd9ec6d4ae2855aa790d620eec4',
+  domain: 'www.notion.so/frankcbliu/6a76fdd9ec6d4ae2855aa790d620eec4',
   author: 'Travis Fischer',
 
   // open graph metadata (optional)
