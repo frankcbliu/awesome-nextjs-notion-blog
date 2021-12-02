@@ -4,7 +4,7 @@
   </a>
 </p>
 
-# Next.js Notion Starter Kit
+# Next.js Notion Blog
 
 > The perfect starter kit for building websites with Next.js and Notion.
 
@@ -12,7 +12,7 @@
 
 ## Intro
 
-This repo is what I use to power my personal blog / portfolio site [transitivebullsh.it](https://transitivebullsh.it).
+This project based on [transitivebullsh.it](https://transitivebullsh.it).
 
 It uses Notion as a CMS, fetching content from Notion and then uses [Next.js](https://nextjs.org/) and [react-notion-x](https://github.com/NotionX/react-notion-x) to render everything.
 
