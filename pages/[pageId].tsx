@@ -1,6 +1,6 @@
 import React from 'react'
 import { isDev, domain } from 'lib/config'
-import { getSiteMaps } from 'lib/get-site-maps'
+// import { getSiteMaps } from 'lib/get-site-maps'
 import { resolveNotionPage } from 'lib/resolve-notion-page'
 import { NotionPage } from 'components'
 
@@ -36,17 +36,17 @@ export async function getStaticPaths() {
     }
   }
 
-  const siteMaps = await getSiteMaps()
+  // const siteMaps = await getSiteMaps()
 
   const ret = {
-    paths: siteMaps.flatMap((siteMap) =>
-      Object.keys(siteMap.canonicalPageMap).map((pageId) => ({
-        params: {
-          pageId
-        }
-      }))
-    ),
-    // paths: [],
+    // paths: siteMaps.flatMap((siteMap) =>
+    //   Object.keys(siteMap.canonicalPageMap).map((pageId) => ({
+    //     params: {
+    //       pageId
+    //     }
+    //   }))
+    // ),
+    paths: [],
     fallback: true
   }
 

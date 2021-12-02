@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import got from 'got'
 import lqip from 'lqip-modern'
 
-// import { isPreviewImageSupportEnabled } from '../lib/config'
+import { isPreviewImageSupportEnabled } from '../lib/config'
 import * as types from '../lib/types'
 import * as db from '../lib/db'
 
@@ -15,11 +15,11 @@ export default async (
     return res.status(405).send({ error: 'method not allowed' })
   }
 
-  // if (!isPreviewImageSupportEnabled) {
-  //   return res.status(418).send({
-  //     error: 'preview image support has been disabled for this deployment'
-  //   })
-  // }
+  if (!isPreviewImageSupportEnabled) {
+    return res.status(418).send({
+      error: 'preview image support has been disabled for this deployment'
+    })
+  }
 
   const { url, id } = req.body
 
