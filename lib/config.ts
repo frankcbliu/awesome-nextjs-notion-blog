@@ -157,6 +157,7 @@ function getGoogleApplicationCredentials() {
       Buffer.from(googleApplicationCredentialsBase64, 'base64').toString()
     )
   } catch (err) {
+    // 这里报错信息代表我们的 JSON 字符串需要经过 base64 编码
     console.error(
       'Firebase config error: invalid "GOOGLE_APPLICATION_CREDENTIALS" should be base64-encoded JSON\n'
     )
