@@ -8,6 +8,8 @@ import { useSearchParam } from 'react-use'
 import BodyClassName from 'react-body-classname'
 import useDarkMode from 'use-dark-mode'
 import { PageBlock } from 'notion-types'
+import { FiBarChart2 } from 'react-icons/fi'
+import ColorThief from 'colorthief'
 
 import { Tweet, TwitterContextProvider } from 'react-static-tweets'
 
@@ -34,6 +36,8 @@ import { Footer } from './Footer'
 import { PageSocial } from './PageSocial'
 import { GitHubShareButton } from './GitHubShareButton'
 import { ReactUtterances } from './ReactUtterances'
+import { ViewCounter } from './ViewCounter'
+import { SimpleFeedback } from './SimpleFeedback'
 
 import styles from './styles.module.css'
 
@@ -52,16 +56,13 @@ import styles from './styles.module.css'
 //   }
 // )
 
-// TODO: PDF support via "react-pdf" package has numerous troubles building
-// with next.js
-// const Pdf = dynamic(
-//   () => import('react-notion-x').then((notion) => notion.Pdf),
-//   { ssr: false }
-// )
+const Pdf = dynamic(() => import('react-notion-x').then((notion) => notion.Pdf))
 
 const Equation = dynamic(() =>
   import('react-notion-x').then((notion) => notion.Equation)
 )
+
+const BLOG_POST_PARENT_TABLE = 'block' // Originally, this was set to `collection`
 
 // we're now using a much lighter-weight tweet renderer react-static-tweets
 // instead of the official iframe-based embed widget from twitter
@@ -71,6 +72,11 @@ const Modal = dynamic(
   () => import('react-notion-x').then((notion) => notion.Modal),
   { ssr: false }
 )
+
+function getEmojiUrl(emoji) {
+  const hex = emoji.codePointAt(0).toString(16)
+  return `https://raw.githubusercontent.com/twitter/twemoji/master/assets/svg/${hex}.svg`
+}
 
 export const NotionPage: React.FC<types.PageProps> = ({
   site,
@@ -88,7 +94,50 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const isLiteMode = lite === 'true'
   const searchParams = new URLSearchParams(params)
 
-  const darkMode = useDarkMode(false, { classNameDark: 'dark-mode' })
+  const darkMode = useDarkMode(true, { classNameDark: 'dark-mode' })
+
+  React.useEffect(() => {
+    const breadcrumb = document.querySelector('.breadcrumb.active')
+    if (!breadcrumb) return
+
+    // Trigger scroll on breadcrumb click. Scroll to bottom if
+    // window is at top. Else, scroll to top.
+    breadcrumb.addEventListener('click', () => {
+      if (window.scrollY === 0) {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
+        ;(breadcrumb as any).setAttribute('title', 'Scroll to top')
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+        ;(breadcrumb as any).setAttribute('title', 'Scroll to bottom')
+      }
+    })
+    ;(breadcrumb as any).style.cursor = 'pointer'
+
+    // Update background color for cover image
+    matchBackgroundColorWithCover()
+  }, [router.isFallback])
+
+  function matchBackgroundColorWithCover() {
+    const colorThief = new ColorThief()
+    const img = document.querySelector(
+      '.lazy-image-wrapper img:not([width="1500"]):not([src*="//images.unsplash.com"])'
+    ) as any
+
+    // Do nothing if page has no cover image
+    if (!img) return
+
+    function updateColor(color: string[]) {
+      img.closest('div').style.backgroundColor = `rgb(${color.join(',')})`
+    }
+
+    if (img.complete) {
+      updateColor(colorThief.getColor(img))
+    } else {
+      img.addEventListener('load', () => {
+        updateColor(colorThief.getColor(img))
+      })
+    }
+  }
 
   if (router.isFallback) {
     return <Loading />
@@ -103,13 +152,14 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   const title = getBlockTitle(block, recordMap) || site.name
 
-  console.log('notion page', {
-    isDev: config.isDev,
-    title,
-    pageId,
-    rootNotionPageId: site.rootNotionPageId,
-    recordMap
-  })
+  // Uncomment to debug
+  // console.log('notion page', {
+  //   isDev: config.isDev,
+  //   title,
+  //   pageId,
+  //   rootNotionPageId: site.rootNotionPageId,
+  //   recordMap
+  // })
 
   if (!config.isServer) {
     // add important objects to the window global for easy debugging
@@ -121,20 +171,35 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   const siteMapPageUrl = mapPageUrl(site, recordMap, searchParams)
 
-  const canonicalPageUrl =
-    !config.isDev && getCanonicalPageUrl(site, recordMap)(pageId)
+  const pageUrl = getCanonicalPageUrl(site, recordMap)(pageId)
+  const canonicalPageUrl = !config.isDev && pageUrl
+  const slug = new URL(pageUrl).pathname.substr(1).replace(`-${pageId}`, '')
 
   // const isRootPage =
   //   parsePageId(block.id) === parsePageId(site.rootNotionPageId)
-  const isBlogPost = block.type === 'page' // && block.parent_table === 'collection'
-  console.log(block.parent_table)
+  const isBlogPost =
+    block.type === 'page' && block.parent_table === BLOG_POST_PARENT_TABLE
   const showTableOfContents = !!isBlogPost
   const minTableOfContentsItems = 3
 
-  const socialImage = mapNotionImageUrl(
+  let socialImage = mapNotionImageUrl(
     (block as PageBlock).format?.page_cover || config.defaultPageCover,
     block
   )
+
+  // Use dynamic og image based on page title and icon
+  if (!socialImage) {
+    const text = router.asPath === '/' ? site.domain : encodeURIComponent(title)
+    let page_icon = (block.format as any).page_icon || 'NO_IMAGE'
+    if (page_icon.startsWith('http')) {
+      // Fallback to NO_IMAGE if page_icon is not emoji
+      page_icon = 'NO_IMAGE'
+    } else {
+      // Convert emoji to svg url
+      page_icon = getEmojiUrl(page_icon)
+    }
+    socialImage = `https://og-image.wzulfikar.com/i/**${text}**.png?theme=dark&md=1&fontSize=125px&images=${page_icon}`
+  }
 
   const socialDescription =
     getPageDescription(block, recordMap) ?? config.description
@@ -146,13 +211,38 @@ export const NotionPage: React.FC<types.PageProps> = ({
   if (isBlogPost) {
     if (config.utterancesGitHubRepo) {
       comments = (
-        <ReactUtterances
-          repo={config.utterancesGitHubRepo}
-          label={config.utterancesGitHubLabel} // 新增评论标签
-          issueMap='issue-term'
-          issueTerm='title'
-          theme={darkMode.value ? 'photon-dark' : 'github-light'}
-        />
+        <>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              width: '100%',
+              alignItems: 'center',
+              marginTop: '2rem'
+            }}
+          >
+            <div>
+              <SimpleFeedback slug={slug} />
+            </div>
+            <div
+              style={{
+                marginLeft: 'auto',
+                display: 'flex',
+                alignItems: 'center'
+              }}
+            >
+              <FiBarChart2 style={{ marginRight: 3, marginBottom: 2 }} />
+              <ViewCounter slug={slug} />
+            </div>
+          </div>
+          <ReactUtterances
+            repo={config.utterancesGitHubRepo}
+            label={config.utterancesGitHubLabel}
+            issueMap='issue-term'
+            issueTerm='title'
+            theme={darkMode.value ? 'photon-dark' : 'github-light'}
+          />
+        </>
       )
     }
 
@@ -161,7 +251,9 @@ export const NotionPage: React.FC<types.PageProps> = ({
       pageAside = <PageActions tweet={tweet} />
     }
   } else {
-    pageAside = <PageSocial />
+    if (config.showPageAsideSocials) {
+      pageAside = <PageSocial />
+    }
   }
 
   return (
@@ -175,7 +267,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
       }}
     >
       <PageHead site={site} />
-
       <Head>
         <meta property='og:title' content={title} />
         <meta property='og:site_name' content={site.name} />
@@ -215,11 +306,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
         <title>{title}</title>
       </Head>
-
       <CustomFont site={site} />
-
       {isLiteMode && <BodyClassName className='notion-lite' />}
-
       <NotionRenderer
         bodyClassName={cs(
           styles.notion,
@@ -255,6 +343,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
           collectionRow: CollectionRow,
           tweet: Tweet,
           modal: Modal,
+          pdf: Pdf,
           equation: Equation
         }}
         recordMap={recordMap}
@@ -275,13 +364,13 @@ export const NotionPage: React.FC<types.PageProps> = ({
         pageAside={pageAside}
         footer={
           <Footer
+            pageId={pageId}
             isDarkMode={darkMode.value}
             toggleDarkMode={darkMode.toggle}
           />
         }
       />
-
-      <GitHubShareButton />
+      {config.showGithubRibbon && <GitHubShareButton />}
     </TwitterContextProvider>
   )
 }

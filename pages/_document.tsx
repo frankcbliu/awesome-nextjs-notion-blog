@@ -37,7 +37,8 @@ export default class MyDocument extends Document {
             <link rel='manifest' href='/manifest.json' />
           </Head>
 
-          <body>
+          {/* Activate dark-mode by default */}
+          <body className='dark-mode'>
             <script src='noflash.js' />
 
             <Main />

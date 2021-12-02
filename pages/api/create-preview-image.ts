@@ -11,15 +11,20 @@ export default async (
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> => {
+  console.log('create-preview-image: method:', req.method)
+
   if (req.method !== 'POST') {
-    return res.status(405).send({ error: 'method not allowed' })
+    return res
+      .status(405)
+      .send({ error: 'create-preview-image: method not allowed' })
   }
 
-  if (!isPreviewImageSupportEnabled) {
-    return res.status(418).send({
-      error: 'preview image support has been disabled for this deployment'
-    })
-  }
+  // Debug vercel build error (probably race condition)
+  // if (!isPreviewImageSupportEnabled) {
+  //   return res.status(418).send({
+  //     error: 'preview image support has been disabled for this deployment'
+  //   })
+  // }
 
   const { url, id } = req.body
 

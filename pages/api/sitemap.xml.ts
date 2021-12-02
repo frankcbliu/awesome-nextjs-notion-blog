@@ -9,7 +9,7 @@ export default async (
   res: NextApiResponse
 ): Promise<void> => {
   if (req.method !== 'GET') {
-    return res.status(405).send({ error: 'method not allowed' })
+    return res.status(405).send({ error: 'sitemap.xml: method not allowed' })
   }
 
   const siteMaps = await getSiteMaps()

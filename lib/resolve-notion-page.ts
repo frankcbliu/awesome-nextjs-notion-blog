@@ -15,7 +15,6 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
 
   if (rawPageId && rawPageId !== 'index') {
     pageId = parsePageId(rawPageId)
-    console.log('[DEBUG] pageId: ', pageId, 'rawPageId', rawPageId)
 
     if (!pageId) {
       // check if the site configuration provides an override of a fallback for
@@ -25,7 +24,6 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
 
       if (override) {
         pageId = parsePageId(override)
-        console.log('[DEBUG] override: ', override, 'pageId', pageId)
       }
     }
 
@@ -42,7 +40,7 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
       // e.g., /developer-x-entrepreneur versus /71201624b204481f862630ea25ce62fe
       const siteMaps = await getSiteMaps()
       const siteMap = siteMaps[0]
-      pageId = siteMap?.canonicalPageMap[rawPageId]
+      pageId = siteMap.canonicalPageMap[rawPageId]
 
       if (pageId) {
         // TODO: we're not re-using the site from siteMaps because it is
@@ -70,11 +68,10 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
     site = await getSiteForDomain(domain)
     pageId = site.rootNotionPageId
 
-    console.log(site)
+    // console.log(site)
     recordMap = await getPage(pageId)
   }
 
-  console.log('[DEBUG] props.pageId: ', pageId)
   const props = { site, recordMap, pageId }
   return { ...props, ...(await acl.pageAcl(props)) }
 }

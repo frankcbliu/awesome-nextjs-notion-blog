@@ -8,9 +8,10 @@ import styles from './styles.module.css'
 // TODO: merge the data and icons from PageSocial with the social links in Footer
 
 export const Footer: React.FC<{
+  pageId: string
   isDarkMode: boolean
   toggleDarkMode: () => void
-}> = ({ isDarkMode, toggleDarkMode }) => {
+}> = ({ pageId, isDarkMode, toggleDarkMode }) => {
   const [hasMounted, setHasMounted] = React.useState(false)
   const toggleDarkModeCb = React.useCallback(
     (e) => {
@@ -24,16 +25,31 @@ export const Footer: React.FC<{
     setHasMounted(true)
   }, [])
 
+  const notionUrl = `https://notion.so/${config.name}/${pageId.replace(
+    /-/g,
+    ''
+  )}`
+
   return (
     <footer className={styles.footer}>
-      <div className={styles.copyright}>Copyright 2021 {config.author}</div>
+      <div className={styles.copyright}>
+        {new Date().getFullYear()} All rights reserved ·{' '}
+        <a
+          style={{ textDecoration: 'underline' }}
+          href={notionUrl}
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          View in Notion
+        </a>
+      </div>
 
       {hasMounted ? (
         <div className={styles.settings}>
           <a
             className={styles.toggleDarkMode}
             onClick={toggleDarkModeCb}
-            title='Toggle dark mode'
+            title='Tottle dark mode'
           >
             {isDarkMode ? <IoMoonSharp /> : <IoSunnyOutline />}
           </a>

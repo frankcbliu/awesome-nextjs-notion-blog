@@ -31,6 +31,8 @@ export const pageUrlOverrides = cleanPageUrlMap(
 
 export const inversePageUrlOverrides = invertPageUrlOverrides(pageUrlOverrides)
 
+export const fontFamily = getSiteConfig('fontFamily', null)
+
 export const pageUrlAdditions = cleanPageUrlMap(
   getSiteConfig('pageUrlAdditions', {}) || {},
   'pageUrlAdditions'
@@ -41,6 +43,14 @@ export const name: string = getSiteConfig('name')
 export const author: string = getSiteConfig('author')
 export const domain: string = getSiteConfig('domain')
 export const description: string = getSiteConfig('description', 'Notion Blog')
+export const showGithubRibbon: boolean = getSiteConfig(
+  'showGithubRibbon',
+  false
+)
+export const showPageAsideSocials: boolean = getSiteConfig(
+  'showPageAsideSocials',
+  false
+)
 
 // social accounts
 export const twitter: string | null = getSiteConfig('twitter', null)
@@ -76,7 +86,6 @@ export const utterancesGitHubRepo: string | null = getSiteConfig(
   null
 )
 
-// 新增评论标签
 export const utterancesGitHubLabel: string | null = getSiteConfig(
   'utterancesGitHubLabel',
   null
@@ -119,8 +128,13 @@ export const api = {
 
 export const fathomId = isDev ? null : process.env.NEXT_PUBLIC_FATHOM_ID
 
+const fathomDomain = isDev ? null : process.env.NEXT_PUBLIC_FATHOM_DOMAIN
+
 export const fathomConfig = fathomId
   ? {
+      url: fathomDomain
+        ? `https://${fathomDomain}/script.js`
+        : 'https://cdn.usefathom.com/script.js',
       excludedDomains: ['localhost', 'localhost:3000']
     }
   : undefined
@@ -140,6 +154,16 @@ export const firebaseCollectionImages = getEnv(
   defaultEnvValueForPreviewImageSupport
 )
 
+export const firebaseCollectionPageviews = getEnv(
+  'FIREBASE_COLLECTION_PAGEVIEWS',
+  'pageviews'
+)
+
+export const firebaseCollectionFeedbacks = getEnv(
+  'FIREBASE_COLLECTION_FEEDBACKS',
+  'feedbacks'
+)
+
 // this hack is necessary because vercel doesn't support secret files so we need to encode our google
 // credentials a base64-encoded string of the JSON-ified content
 function getGoogleApplicationCredentials() {
@@ -157,7 +181,6 @@ function getGoogleApplicationCredentials() {
       Buffer.from(googleApplicationCredentialsBase64, 'base64').toString()
     )
   } catch (err) {
-    // 这里报错信息代表我们的 JSON 字符串需要经过 base64 编码
     console.error(
       'Firebase config error: invalid "GOOGLE_APPLICATION_CREDENTIALS" should be base64-encoded JSON\n'
     )

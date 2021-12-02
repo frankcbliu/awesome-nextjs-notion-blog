@@ -6,7 +6,7 @@ export default async (
   res: NextApiResponse
 ): Promise<void> => {
   if (req.method !== 'GET') {
-    return res.status(405).send({ error: 'method not allowed' })
+    return res.status(405).send({ error: 'tweetId: method not allowed' })
   }
 
   const tweetId = req.query.tweetId as string

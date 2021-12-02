@@ -7,7 +7,7 @@ export default async (
   res: NextApiResponse
 ): Promise<void> => {
   if (req.method !== 'GET') {
-    return res.status(405).send({ error: 'method not allowed' })
+    return res.status(405).send({ error: 'robots.txt: method not allowed' })
   }
 
   // cache robots.txt for up to 60 seconds
