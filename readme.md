@@ -40,8 +40,8 @@ The site is then deployed to [Vercel](http://vercel.com).
 
 1. Fork / clone this repo
 2. Change a few values in [site.config.js](./site.config.js)
-3. `npm install`
-4. `npm run dev` to test locally
+3. `yarn`
+4. `yarn dev` to test locally
 5. `npm run deploy` to deploy to vercel 💪
 
 I tried to make configuration as easy as possible.
