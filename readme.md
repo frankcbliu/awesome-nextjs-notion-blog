@@ -6,6 +6,8 @@
 
 # Next.js Notion Blog
 
+基于 `Next.js`、`Notion`实现的个人博客系统
+
 > The perfect starter kit for building websites with Next.js and Notion.
 
 [![Build Status](https://travis-ci.com/transitive-bullshit/nextjs-notion-starter-kit.svg?branch=main)](https://travis-ci.com/transitive-bullshit/nextjs-notion-starter-kit) [![Prettier Code Formatting](https://img.shields.io/badge/code_style-prettier-brightgreen.svg)](https://prettier.io)
@@ -185,6 +187,6 @@ This table of contents uses the same logic that Notion uses for its built-in Tab
 
 ## License
 
-MIT © [Travis Fischer](https://transitivebullsh.it)
+MIT © 
 
-Support my open source work by <a href="https://twitter.com/transitive_bs">following me on twitter <img src="https://storage.googleapis.com/saasify-assets/twitter-logo.svg" alt="twitter" height="24px" align="center"></a>
+This project based on [transitivebullsh.it](https://transitivebullsh.it).
