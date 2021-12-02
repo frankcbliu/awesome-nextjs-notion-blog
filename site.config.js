@@ -8,7 +8,7 @@ module.exports = {
 
   // basic site info (required)
   name: '菜饼的技术博客',
-  domain: 'www.notion.so/frankcbliu/6a76fdd9ec6d4ae2855aa790d620eec4',
+  domain: 'nextjs-notion-starter-kit-three-delta.vercel.app',
   author: '菜饼',
 
   // open graph metadata (optional)
