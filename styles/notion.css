@@ -34,13 +34,34 @@
   margin-bottom: 1em;
 }
 
-/* <-- Fix embedded video's size overflows its container */
-.notion-asset-wrapper-video>div,
-.notion-asset-wrapper-video video {
-  width: 100% !important;
+.notion-asset-wrapper video {
+  height: 100%;
+  height: -moz-available; /* WebKit-based browsers will ignore this. */
+  height: -webkit-fill-available; /* Mozilla-based browsers will ignore this. */
+  height: fill-available;
+  max-height: 80vh;
+  max-width: 80vw;
 }
 
-/* Fix embedded video's size overflows its container --> */
+.notion-asset-wrapper iframe {
+  max-width: 95vw;
+}
+
+.lazy-image-wrapper img.lazy-image-real {
+  position: relative !important;
+}
+
+.lazy-image-wrapper.lazy-image-loaded {
+  padding-bottom: 0px !important;
+}
+
+@media only screen and (min-width: 600px) {
+  /* Use object-fit contain if image width is not Notion's recommended width */
+  .lazy-image-wrapper img:not([width="1500"]):not([src*="//images.unsplash.com"])
+  {
+    object-fit: contain;
+  }
+}
 
 .notion-header .nav-header {
   max-width: 1100px;
@@ -102,7 +123,6 @@
 
 /* only target safari */
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
-
   _::-webkit-full-page-media,
   _:future,
   :root,
