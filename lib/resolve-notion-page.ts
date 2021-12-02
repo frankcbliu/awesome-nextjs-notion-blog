@@ -15,6 +15,7 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
 
   if (rawPageId && rawPageId !== 'index') {
     pageId = parsePageId(rawPageId)
+    console.log('[DEBUG] pageId: ', pageId, 'rawPageId', rawPageId)
 
     if (!pageId) {
       // check if the site configuration provides an override of a fallback for
@@ -24,6 +25,7 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
 
       if (override) {
         pageId = parsePageId(override)
+        console.log('[DEBUG] override: ', override, 'pageId', pageId)
       }
     }
 
@@ -72,6 +74,7 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
     recordMap = await getPage(pageId)
   }
 
+  console.log('[DEBUG] props.pageId: ', pageId)
   const props = { site, recordMap, pageId }
   return { ...props, ...(await acl.pageAcl(props)) }
 }
