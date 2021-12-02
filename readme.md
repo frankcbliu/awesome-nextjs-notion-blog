@@ -4,7 +4,9 @@
   </a>
 </p>
 
-# Next.js Notion Starter Kit
+# Next.js Notion Blog
+
+基于 `Next.js`、`Notion`实现的个人博客系统
 
 > The perfect starter kit for building websites with Next.js and Notion.
 
@@ -12,7 +14,7 @@
 
 ## Intro
 
-This repo is what I use to power my personal blog / portfolio site [transitivebullsh.it](https://transitivebullsh.it).
+This project based on [transitivebullsh.it](https://transitivebullsh.it).
 
 It uses Notion as a CMS, fetching content from Notion and then uses [Next.js](https://nextjs.org/) and [react-notion-x](https://github.com/NotionX/react-notion-x) to render everything.
 
@@ -40,8 +42,8 @@ The site is then deployed to [Vercel](http://vercel.com).
 
 1. Fork / clone this repo
 2. Change a few values in [site.config.js](./site.config.js)
-3. `npm install`
-4. `npm run dev` to test locally
+3. `yarn`
+4. `yarn dev` to test locally
 5. `npm run deploy` to deploy to vercel 💪
 
 I tried to make configuration as easy as possible.
@@ -185,6 +187,6 @@ This table of contents uses the same logic that Notion uses for its built-in Tab
 
 ## License
 
-MIT © [Travis Fischer](https://transitivebullsh.it)
+MIT © 
 
-Support my open source work by <a href="https://twitter.com/transitive_bs">following me on twitter <img src="https://storage.googleapis.com/saasify-assets/twitter-logo.svg" alt="twitter" height="24px" align="center"></a>
+This project based on [transitivebullsh.it](https://transitivebullsh.it).
