@@ -356,9 +356,11 @@
 
 /* 自定义样式 */
 
+.notion-page {
+  width: 100%;
+}
+
 .notion-aside {
-  position: fixed;
-  left: 5%;
   overflow-y: auto;
 }
 
