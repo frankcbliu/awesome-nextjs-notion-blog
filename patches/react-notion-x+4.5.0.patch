@@ -1,8 +1,8 @@
 diff --git a/node_modules/react-notion-x/build/esm/block.js b/node_modules/react-notion-x/build/esm/block.js
-index 7a25ebf..fc4446b 100644
+index 7a25ebf..054ddcf 100644
 --- a/node_modules/react-notion-x/build/esm/block.js
 +++ b/node_modules/react-notion-x/build/esm/block.js
-@@ -93,39 +93,47 @@ export var Block = function (props) {
+@@ -93,39 +93,48 @@ export var Block = function (props) {
                          React.createElement("div", { className: 'notion-frame' },
                              React.createElement(PageHeader, null),
                              React.createElement("div", { className: 'notion-page-scroller' },
@@ -55,12 +55,14 @@ index 7a25ebf..fc4446b 100644
 +                                                            }
 +                                                        }, tocItem.text)));
                                                  })))),
-                                             pageAside))),
-+                                    React.createElement("article", { className: 'notion-page-content-inner' }, children),
+-                                            pageAside))),
++                                            pageAside)),
++                                        React.createElement("article", { className: 'notion-page-content-inner' }, children),
++                                    ),
                                      pageFooter),
                                  footer))));
                  }
-@@ -273,8 +281,10 @@ export var Block = function (props) {
+@@ -273,8 +282,10 @@ export var Block = function (props) {
          case 'collection_view':
              return React.createElement(components.collection, { block: block, className: blockId });
          case 'callout':
@@ -73,7 +75,7 @@ index 7a25ebf..fc4446b 100644
                  React.createElement(PageIcon, { block: block }),
                  React.createElement("div", { className: 'notion-callout-text' },
                      React.createElement(Text, { value: (_u = block.properties) === null || _u === void 0 ? void 0 : _u.title, block: block }))));
-@@ -318,11 +328,15 @@ export var Block = function (props) {
+@@ -318,11 +329,15 @@ export var Block = function (props) {
                  return null;
              var toc = getPageTableOfContents(page, recordMap);
              var blockColor_4 = (_7 = block.format) === null || _7 === void 0 ? void 0 : _7.block_color;
