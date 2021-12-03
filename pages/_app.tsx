@@ -56,6 +56,7 @@ export default function App({ Component, pageProps }) {
       // }
       const handleRouteChange = (url: URL) => {
         if (process.env.NODE_ENV === 'production') {
+          // @ts-ignore
           window.gtag('config', 'G-R331YKBG3V', {
             page_path: url
           })
