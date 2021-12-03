@@ -20,6 +20,7 @@ module.exports = {
   twitter: 'transitive_bs',
   github: 'frankcbliu',
   linkedin: 'fisch2',
+  wechatPublic: '菜饼不菜'
 
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults
@@ -51,5 +52,6 @@ module.exports = {
   pageUrlOverrides: {
     '/os': 'ff8a4877c04f42eda0d050547c117ea5',
     // '/closure': 'C-6cfc812927c44a688e874d6212265b30'
-  }
+  },
+  showPageAsideSocials: true
 }
