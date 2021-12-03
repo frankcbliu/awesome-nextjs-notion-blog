@@ -103,3 +103,107 @@ index a263926..f79e5b3 100644
          }
          case 'to_do':
              var isChecked = ((_10 = (_9 = (_8 = block.properties) === null || _8 === void 0 ? void 0 : _8.checked) === null || _9 === void 0 ? void 0 : _9[0]) === null || _10 === void 0 ? void 0 : _10[0]) === 'Yes';
+diff --git a/node_modules/react-notion-x/build/esm/block.js b/node_modules/react-notion-x/build/esm/block.js
+index 0edd547..81af72f 100644
+--- a/node_modules/react-notion-x/build/esm/block.js
++++ b/node_modules/react-notion-x/build/esm/block.js
+@@ -1,5 +1,5 @@
+ var __assign = (this && this.__assign) || function () {
+-    __assign = Object.assign || function(t) {
++    __assign = Object.assign || function (t) {
+         for (var s, i = 1, n = arguments.length; i < n; i++) {
+             s = arguments[i];
+             for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+@@ -106,39 +106,47 @@ export var Block = function (props) {
+                         React.createElement("div", { className: 'notion-frame' },
+                             React.createElement(PageHeader, null),
+                             React.createElement("div", { className: 'notion-page-scroller' },
+-                                hasPageCover ? (pageCover ? (pageCover) : (React.createElement(LazyImage, { src: mapImageUrl(page_cover, block), alt: getTextContent(properties_1 === null || properties_1 === void 0 ? void 0 : properties_1.title), className: 'notion-page-cover', style: {
++                                hasPageCover ? (pageCover ? (pageCover) : (React.createElement(LazyImage, {
++                                    src: mapImageUrl(page_cover, block), alt: getTextContent(properties_1 === null || properties_1 === void 0 ? void 0 : properties_1.title), className: 'notion-page-cover', style: {
+                                         objectPosition: "center " + coverPosition + "%"
+-                                    } }))) : null,
+-                                React.createElement("main", { className: cs('notion-page', hasPageCover
++                                    }
++                                }))) : null,
++                                React.createElement("main", {
++                                    className: cs('notion-page', hasPageCover
+                                         ? 'notion-page-has-cover'
+                                         : 'notion-page-no-cover', page_icon
+                                         ? 'notion-page-has-icon'
+                                         : 'notion-page-no-icon', isPageIconUrl
+                                         ? 'notion-page-has-image-icon'
+-                                        : 'notion-page-has-text-icon', 'notion-full-page', page_full_width && 'notion-full-width', page_small_text && 'notion-small-text', bodyClassName) },
++                                        : 'notion-page-has-text-icon', 'notion-full-page', page_full_width && 'notion-full-width', page_small_text && 'notion-small-text', bodyClassName)
++                                },
+                                     page_icon && (React.createElement("div", { className: 'notion-page-icon-wrapper' },
+                                         React.createElement(PageIcon, { block: block, defaultIcon: defaultPageIcon }))),
+                                     pageHeader,
+                                     React.createElement("h1", { className: 'notion-title' },
+                                         React.createElement(Text, { value: properties_1 === null || properties_1 === void 0 ? void 0 : properties_1.title, block: block })),
+                                     block.type === 'page' &&
+-                                        block.parent_table === 'collection' && (React.createElement(components.collectionRow, { block: block })),
++                                    block.parent_table === 'collection' && (React.createElement(components.collectionRow, { block: block })),
+                                     block.type === 'collection_view_page' && (React.createElement(components.collection, { block: block })),
+                                     React.createElement("div", { className: cs('notion-page-content', hasAside && 'notion-page-content-has-aside', hasToc && 'notion-page-content-has-toc') },
+-                                        React.createElement("article", { className: 'notion-page-content-inner' }, children),
+                                         hasAside && (React.createElement("aside", { className: 'notion-aside' },
+                                             hasToc && (React.createElement("div", { className: 'notion-aside-table-of-contents' },
+                                                 React.createElement("div", { className: 'notion-aside-table-of-contents-header' }, "Table of Contents"),
+                                                 React.createElement("nav", { className: cs('notion-table-of-contents', !darkMode && 'notion-gray') }, toc.map(function (tocItem) {
+                                                     var id = uuidToId(tocItem.id);
+-                                                    return (React.createElement("a", { key: id, href: "#" + id, className: cs('notion-table-of-contents-item', "notion-table-of-contents-item-indent-level-" + tocItem.indentLevel, activeSection_1 === id &&
+-                                                            'notion-table-of-contents-active-item') },
+-                                                        React.createElement("span", { className: 'notion-table-of-contents-item-body', style: {
++                                                    return (React.createElement("a", {
++                                                        key: id, href: "#" + id, className: cs('notion-table-of-contents-item', "notion-table-of-contents-item-indent-level-" + tocItem.indentLevel, activeSection_1 === id &&
++                                                            'notion-table-of-contents-active-item')
++                                                    },
++                                                        React.createElement("span", {
++                                                            className: 'notion-table-of-contents-item-body', style: {
+                                                                 display: 'inline-block',
+                                                                 marginLeft: tocItem.indentLevel * 16
+-                                                            } }, tocItem.text)));
++                                                            }
++                                                        }, tocItem.text)));
+                                                 })))),
+-                                            pageAside))),
++                                            pageAside)),
++                                        React.createElement("article", { className: 'notion-page-content-inner' }, children)),
+                                     pageFooter),
+                                 footer))));
+                 }
+@@ -317,8 +325,10 @@ export var Block = function (props) {
+                 return React.createElement(components.callout, { block: block, className: blockId });
+             }
+             else {
+-                return (React.createElement("div", { className: cs('notion-callout', ((_s = block.format) === null || _s === void 0 ? void 0 : _s.block_color) &&
+-                        "notion-" + ((_t = block.format) === null || _t === void 0 ? void 0 : _t.block_color) + "_co", blockId) },
++                return (React.createElement("div", {
++                    className: cs('notion-callout', ((_s = block.format) === null || _s === void 0 ? void 0 : _s.block_color) &&
++                        "notion-" + ((_t = block.format) === null || _t === void 0 ? void 0 : _t.block_color) + "_co", blockId)
++                },
+                     React.createElement(PageIcon, { block: block }),
+                     React.createElement("div", { className: 'notion-callout-text' },
+                         React.createElement(Text, { value: (_u = block.properties) === null || _u === void 0 ? void 0 : _u.title, block: block }),
+@@ -366,11 +376,15 @@ export var Block = function (props) {
+                 return null;
+             var toc = getPageTableOfContents(page, recordMap);
+             var blockColor_4 = (_7 = block.format) === null || _7 === void 0 ? void 0 : _7.block_color;
+-            return (React.createElement("div", { className: cs('notion-table-of-contents', blockColor_4 && "notion-" + blockColor_4, blockId) }, toc.map(function (tocItem) { return (React.createElement("a", { key: tocItem.id, href: "#" + uuidToId(tocItem.id), className: 'notion-table-of-contents-item' },
+-                React.createElement("span", { className: 'notion-table-of-contents-item-body', style: {
+-                        display: 'inline-block',
+-                        marginLeft: tocItem.indentLevel * 24
+-                    } }, tocItem.text))); })));
++            return (React.createElement("div", { className: cs('notion-table-of-contents', blockColor_4 && "notion-" + blockColor_4, blockId) }, toc.map(function (tocItem) {
++                return (React.createElement("a", { key: tocItem.id, href: "#" + uuidToId(tocItem.id), className: 'notion-table-of-contents-item' },
++                    React.createElement("span", {
++                        className: 'notion-table-of-contents-item-body', style: {
++                            display: 'inline-block',
++                            marginLeft: tocItem.indentLevel * 24
++                        }
++                    }, tocItem.text)));
++            })));
+         }
+         case 'to_do':
+             var isChecked = ((_10 = (_9 = (_8 = block.properties) === null || _8 === void 0 ? void 0 : _8.checked) === null || _9 === void 0 ? void 0 : _9[0]) === null || _10 === void 0 ? void 0 : _10[0]) === 'Yes';
