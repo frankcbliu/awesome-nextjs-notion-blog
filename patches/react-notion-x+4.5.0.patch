@@ -1,0 +1,59 @@
+diff --git a/node_modules/react-notion-x/src/block.tsx b/node_modules/react-notion-x/src/block.tsx
+index c64732a..af13124 100644
+--- a/node_modules/react-notion-x/src/block.tsx
++++ b/node_modules/react-notion-x/src/block.tsx
+@@ -187,20 +187,18 @@ export const Block: React.FC<BlockProps> = (props) => {
+                 <PageHeader />
+ 
+                 <div className='notion-page-scroller'>
+-                  {hasPageCover ? (
+-                    pageCover ? (
+-                      pageCover
+-                    ) : (
+-                      <LazyImage
+-                        src={mapImageUrl(page_cover, block)}
+-                        alt={getTextContent(properties?.title)}
+-                        className='notion-page-cover'
+-                        style={{
+-                          objectPosition: `center ${coverPosition}%`
+-                        }}
+-                      />
+-                    )
+-                  ) : null}
++                  {hasPageCover
++                    ? pageCover || (
++                        <LazyImage
++                          src={mapImageUrl(page_cover, block)}
++                          alt={getTextContent(properties?.title)}
++                          className='notion-page-cover'
++                          style={{
++                            objectPosition: `center ${coverPosition}%`
++                          }}
++                        />
++                      )
++                    : null}
+ 
+                   <main
+                     className={cs(
+@@ -248,10 +246,6 @@ export const Block: React.FC<BlockProps> = (props) => {
+                         hasToc && 'notion-page-content-has-toc'
+                       )}
+                     >
+-                      <article className='notion-page-content-inner'>
+-                        {children}
+-                      </article>
+-
+                       {hasAside && (
+                         <aside className='notion-aside'>
+                           {hasToc && (
+@@ -299,6 +293,10 @@ export const Block: React.FC<BlockProps> = (props) => {
+                           {pageAside}
+                         </aside>
+                       )}
++
++                      <article className='notion-page-content-inner'>
++                        {children}
++                      </article>
+                     </div>
+ 
+                     {pageFooter}
