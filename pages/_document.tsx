@@ -14,15 +14,19 @@ export default class MyDocument extends Document {
             ></script>
 
             <script
+              // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={{
                 __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-R331YKBG3V', { page_path: window.location.pathname });
-            `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-R331YKBG3V', {
+              page_path: window.location.pathname,
+            });
+          `
               }}
             />
+
             <link rel='shortcut icon' href='/favicon.png' />
 
             <link
