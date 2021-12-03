@@ -154,6 +154,7 @@ export const firebaseCollectionImages = getEnv(
   defaultEnvValueForPreviewImageSupport
 )
 
+// 定义 google firebase 的文档集合
 export const firebaseCollectionPageviews = getEnv(
   'FIREBASE_COLLECTION_PAGEVIEWS',
   'pageviews'

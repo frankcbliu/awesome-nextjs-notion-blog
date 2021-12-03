@@ -120,7 +120,7 @@ export function SimpleFeedback({ slug }) {
         }
       `}</style>
       <div className='container'>
-        <div>Was this helpful?</div>
+        <div>文章对你有帮助吗？</div>
         <div>
           <button
             className='btn-feedback'
@@ -130,7 +130,7 @@ export function SimpleFeedback({ slug }) {
               textDecoration: helpful === true ? 'underline 2px' : undefined
             }}
           >
-            Yes{' '}
+            很赞{' '}
             {helpful === null ||
               (count.helpful > 0 && `(${format(count.helpful)})`)}
           </button>
@@ -143,7 +143,7 @@ export function SimpleFeedback({ slug }) {
               textDecoration: helpful === false ? 'underline 2px' : undefined
             }}
           >
-            No{' '}
+            一般{' '}
             {helpful === null ||
               (count.not_helpful > 0 && `(${format(count.not_helpful)})`)}
           </button>
