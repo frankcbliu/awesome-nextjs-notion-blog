@@ -47,12 +47,6 @@ if (typeof window !== 'undefined') {
 export default function App({ Component, pageProps }) {
   const router = useRouter()
 
-  const handleRouteChange = (url: URL) => {
-    window.gtag('config', 'G-R331YKBG3V', {
-      page_path: url
-    })
-  }
-
   React.useEffect(() => {
     if (fathomId) {
       Fathom.load(fathomId, fathomConfig)
@@ -60,6 +54,11 @@ export default function App({ Component, pageProps }) {
       // function onRouteChangeComplete() {
       //   Fathom.trackPageview()
       // }
+      const handleRouteChange = (url: URL) => {
+        window.gtag('config', 'G-R331YKBG3V', {
+          page_path: url
+        })
+      }
 
       router.events.on('routeChangeComplete', handleRouteChange)
 
