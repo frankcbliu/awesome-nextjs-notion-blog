@@ -54,11 +54,13 @@ export default function App({ Component, pageProps }) {
       // function onRouteChangeComplete() {
       //   Fathom.trackPageview()
       // }
+      const isProduction = process.env.NODE_ENV === 'production'
       const handleRouteChange = (url: URL) => {
-        const gtag = window.gtag
-        gtag('config', 'G-R331YKBG3V', {
-          page_path: url
-        })
+        if (isProduction) {
+          window.gtag('config', 'G-R331YKBG3V', {
+            page_path: url
+          })
+        }
       }
 
       router.events.on('routeChangeComplete', handleRouteChange)
