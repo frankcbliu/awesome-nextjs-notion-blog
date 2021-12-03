@@ -55,7 +55,8 @@ export default function App({ Component, pageProps }) {
       //   Fathom.trackPageview()
       // }
       const handleRouteChange = (url: URL) => {
-        window.gtag('config', 'G-R331YKBG3V', {
+        const gtag = window.gtag
+        gtag('config', 'G-R331YKBG3V', {
           page_path: url
         })
       }
