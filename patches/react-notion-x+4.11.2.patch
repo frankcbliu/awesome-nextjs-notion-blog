@@ -1,3 +1,11 @@
+diff --git a/node_modules/react-notion-x/.DS_Store b/node_modules/react-notion-x/.DS_Store
+new file mode 100644
+index 0000000..8f70268
+Binary files /dev/null and b/node_modules/react-notion-x/.DS_Store differ
+diff --git a/node_modules/react-notion-x/build/.DS_Store b/node_modules/react-notion-x/build/.DS_Store
+new file mode 100644
+index 0000000..b500384
+Binary files /dev/null and b/node_modules/react-notion-x/build/.DS_Store differ
 diff --git a/node_modules/react-notion-x/build/cjs/block.js b/node_modules/react-notion-x/build/cjs/block.js
 index a263926..f79e5b3 100644
 --- a/node_modules/react-notion-x/build/cjs/block.js
@@ -103,8 +111,12 @@ index a263926..f79e5b3 100644
          }
          case 'to_do':
              var isChecked = ((_10 = (_9 = (_8 = block.properties) === null || _8 === void 0 ? void 0 : _8.checked) === null || _9 === void 0 ? void 0 : _9[0]) === null || _10 === void 0 ? void 0 : _10[0]) === 'Yes';
+diff --git a/node_modules/react-notion-x/build/esm/.DS_Store b/node_modules/react-notion-x/build/esm/.DS_Store
+new file mode 100644
+index 0000000..4b1631d
+Binary files /dev/null and b/node_modules/react-notion-x/build/esm/.DS_Store differ
 diff --git a/node_modules/react-notion-x/build/esm/block.js b/node_modules/react-notion-x/build/esm/block.js
-index 0edd547..81af72f 100644
+index 0edd547..21f3818 100644
 --- a/node_modules/react-notion-x/build/esm/block.js
 +++ b/node_modules/react-notion-x/build/esm/block.js
 @@ -1,5 +1,5 @@
@@ -114,7 +126,17 @@ index 0edd547..81af72f 100644
          for (var s, i = 1, n = arguments.length; i < n; i++) {
              s = arguments[i];
              for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-@@ -106,39 +106,47 @@ export var Block = function (props) {
+@@ -28,6 +28,9 @@ import { Text } from './components/text';
+ import { SyncPointerBlock } from './components/sync-pointer-block';
+ import { AssetWrapper } from './components/asset-wrapper';
+ var tocIndentLevelCache = {};
++function get0(arr) {
++    return arr[0]
++}
+ export var Block = function (props) {
+     var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z, _0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11;
+     var _12 = useNotionContext(), components = _12.components, fullPage = _12.fullPage, darkMode = _12.darkMode, recordMap = _12.recordMap, mapPageUrl = _12.mapPageUrl, mapImageUrl = _12.mapImageUrl, showTableOfContents = _12.showTableOfContents, minTableOfContentsItems = _12.minTableOfContentsItems, defaultPageIcon = _12.defaultPageIcon, defaultPageCover = _12.defaultPageCover, defaultPageCoverPosition = _12.defaultPageCoverPosition;
+@@ -106,39 +109,47 @@ export var Block = function (props) {
                          React.createElement("div", { className: 'notion-frame' },
                              React.createElement(PageHeader, null),
                              React.createElement("div", { className: 'notion-page-scroller' },
@@ -173,7 +195,16 @@ index 0edd547..81af72f 100644
                                      pageFooter),
                                  footer))));
                  }
-@@ -317,8 +325,10 @@ export var Block = function (props) {
+@@ -277,7 +288,7 @@ export var Block = function (props) {
+             return React.createElement(Equation, { math: math, block: true, className: blockId });
+         case 'code': {
+             if (block.properties.title) {
+-                var content = block.properties.title[0][0];
++                var content = block.properties.title.map(get0).join('');
+                 var language = block.properties.language
+                     ? block.properties.language[0][0]
+                     : '';
+@@ -317,8 +328,10 @@ export var Block = function (props) {
                  return React.createElement(components.callout, { block: block, className: blockId });
              }
              else {
@@ -186,7 +217,7 @@ index 0edd547..81af72f 100644
                      React.createElement(PageIcon, { block: block }),
                      React.createElement("div", { className: 'notion-callout-text' },
                          React.createElement(Text, { value: (_u = block.properties) === null || _u === void 0 ? void 0 : _u.title, block: block }),
-@@ -366,11 +376,15 @@ export var Block = function (props) {
+@@ -366,11 +379,15 @@ export var Block = function (props) {
                  return null;
              var toc = getPageTableOfContents(page, recordMap);
              var blockColor_4 = (_7 = block.format) === null || _7 === void 0 ? void 0 : _7.block_color;
