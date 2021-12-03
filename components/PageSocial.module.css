@@ -86,6 +86,13 @@
   border-color: #2795e9;
 }
 
+.wechatPublic .actionBgPane {
+  background: #1AAD19;
+}
+.wechatPublic:hover {
+  border-color: #2BA245;
+}
+
 .linkedin .actionBgPane {
   background: #0077b5;
 }
