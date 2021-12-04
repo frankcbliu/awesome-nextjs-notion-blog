@@ -75,6 +75,7 @@
 .facebook .actionBgPane {
   background: #3b5998;
 }
+
 .facebook:hover {
   border-color: #3b5998;
 }
@@ -82,6 +83,7 @@
 .twitter .actionBgPane {
   background: #2795e9;
 }
+
 .twitter:hover {
   border-color: #2795e9;
 }
@@ -89,27 +91,29 @@
 .wechatPublic .actionBgPane {
   background: #1AAD19;
 }
+
 .wechatPublic:hover {
   border-color: #2BA245;
 }
 
-.linkedin .actionBgPane {
-  background: #0077b5;
-}
-.linkedin:hover {
-  border-color: #0077b5;
+.github .actionBgPane {
+  background: #2795e9;
 }
 
-.github .actionBgPane {
-  background: #c9510c;
-}
 .github:hover {
-  border-color: #c9510c;
+  border-color: #2795e9;
+}
+
+.twitter:hover > .tooltiptext,
+.github:hover > .tooltiptext,
+.wechatPublic:hover > .tooltiptext {
+  visibility: visible;
 }
 
 .medium .actionBgPane {
   background: #00ab6c;
 }
+
 .medium:hover {
   border-color: #00ab6c;
 }
@@ -117,9 +121,29 @@
 .email .actionBgPane {
   background: #777;
 }
+
 .email:hover {
   border-color: #777;
 }
+
+/* Tooltip 文本 */
+.tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  font-size: 15px;
+  background-color: #DDEDEA;
+  color: #0F7B6C;
+  text-align: center;
+  padding: 1px 0;
+  border-radius: 3px;
+  top: 10px;
+  left: 105%; 
+
+  /* 定位 */
+  position: absolute;
+  z-index: 1;
+}
+
 
 @media only screen and (max-width: 768px) {
   .links {

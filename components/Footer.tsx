@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { FaTwitter, FaGithub, FaLinkedin } from 'react-icons/fa'
+import { SiGithub, SiWechat, SiNotion } from 'react-icons/si'
 import { IoSunnyOutline, IoMoonSharp } from 'react-icons/io5'
 import * as config from 'lib/config'
 
@@ -25,23 +25,12 @@ export const Footer: React.FC<{
     setHasMounted(true)
   }, [])
 
-  const notionUrl = `https://notion.so/${config.name}/${pageId.replace(
-    /-/g,
-    ''
-  )}`
+  const author = `${config.author}`
 
   return (
     <footer className={styles.footer}>
       <div className={styles.copyright}>
-        {new Date().getFullYear()} All rights reserved ·{' '}
-        <a
-          style={{ textDecoration: 'underline' }}
-          href={notionUrl}
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          View in Notion
-        </a>
+        {new Date().getFullYear()} All rights reserved · {author + ' '}
       </div>
 
       {hasMounted ? (
@@ -57,18 +46,6 @@ export const Footer: React.FC<{
       ) : null}
 
       <div className={styles.social}>
-        {config.twitter && (
-          <a
-            className={styles.twitter}
-            href={`https://twitter.com/${config.twitter}`}
-            title={`Twitter @${config.twitter}`}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <FaTwitter />
-          </a>
-        )}
-
         {config.github && (
           <a
             className={styles.github}
@@ -77,19 +54,31 @@ export const Footer: React.FC<{
             target='_blank'
             rel='noopener noreferrer'
           >
-            <FaGithub />
+            <span className={styles.tooltiptext}>@frankcbliu</span>
+            <SiGithub />
           </a>
         )}
-
-        {config.linkedin && (
+        {config.wechatPublic && (
           <a
-            className={styles.linkedin}
-            href={`https://www.linkedin.com/in/${config.linkedin}`}
-            title={`LinkedIn ${config.author}`}
+            className={styles.wechatPublic}
+            href={`https://www.wechat.com/in/${config.wechatPublic}`}
             target='_blank'
             rel='noopener noreferrer'
           >
-            <FaLinkedin />
+            <SiWechat />
+            <span className={styles.tooltiptext}>公众号: 菜饼不菜</span>
+          </a>
+        )}
+        {config.notionPublic && (
+          <a
+            className={styles.notionPublic}
+            href={`${config.notionPublic}`}
+            title='通过 Notion 打开'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <SiNotion />
+            <span className={styles.tooltiptext}>从 Notion 打开</span>
           </a>
         )}
       </div>

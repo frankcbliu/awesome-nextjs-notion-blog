@@ -103,20 +103,49 @@
   color: #2795e9;
 }
 
-.twitter:hover {
-  color: #2795e9;
-}
-
 .github:hover {
   color: #2795e9;
 }
 
-.linkedin:hover {
-  color: #2795e9;
+/* 微信 footbar 样式 */
+.wechatPublic:hover {
+  color: #2BA245;
+  
+}
+
+/* Notion footbar 样式 */
+.notionPublic:hover {
+  color: #975DBE;
+}
+
+
+/* footbar tooltip */
+.tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  font-size: 15px;
+  background-color: #DDEDEA;
+  color: #0F7B6C;
+  text-align: center;
+  padding: 1px 0;
+  border-radius: 3px;
+
+  /* 定位 */
+  position: absolute;
+  z-index: 1;
+}
+
+.github:hover > .tooltiptext,
+.wechatPublic:hover > .tooltiptext,
+.notionPublic:hover > .tooltiptext {
+  visibility: visible;
+  width: 120px;
+  bottom: 70px;
 }
 
 .comments {
   width: 100%;
+  /* max-width: var(--notion-max-width); */
   margin-top: 2em;
   border-top: 1px solid var(--fg-color-0);
 }
@@ -139,7 +168,7 @@
     flex-direction: column;
   }
 
-  .footer > div {
+  .footer>div {
     margin-top: 1em;
     max-width: fit-content;
   }
@@ -147,9 +176,11 @@
   .footer .settings {
     order: 1;
   }
+
   .footer .social {
     order: 2;
   }
+
   .footer .copyright {
     order: 3;
   }
@@ -202,14 +233,17 @@
 }
 
 @keyframes octocat-wave {
+
   0%,
   100% {
     transform: rotate(0);
   }
+
   20%,
   60% {
     transform: rotate(-25deg);
   }
+
   40%,
   80% {
     transform: rotate(10deg);

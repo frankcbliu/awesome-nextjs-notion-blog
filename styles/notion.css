@@ -8,7 +8,7 @@
  */
 
 .notion {
-  --notion-max-width: 720px;
+  --notion-max-width: 800px;
   --notion-header-height: 54px;
 }
 
@@ -18,7 +18,7 @@
 }
 
 .index-page {
-  --notion-max-width: 900px;
+  --notion-max-width: 720px;
 }
 
 .notion-text {
@@ -356,8 +356,15 @@
 
 /* 自定义样式 */
 
-.notion-page {
-  width: 100%;
+
+.notion-full-width {
+  --notion-max-width: 800px;
+  padding-left: calc(min(12px, 8vw));
+  padding-right: calc(min(12px, 8vw));
+}
+
+.notion-page-content-has-aside{
+  transform: translateX(calc(-1 * (100vw - var(--notion-max-width)) / 2));
 }
 
 .notion-aside {
@@ -380,5 +387,5 @@
 }
 
 .notion-aside-table-of-contents::-webkit-scrollbar {
-  display: none; /* Chrome Safari */
+  display: none;  /* Chrome Safari */
 }

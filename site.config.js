@@ -9,7 +9,7 @@ module.exports = {
   // basic site info (required)
   name: '菜饼的技术博客',
   domain: 'nextjs-notion-starter-kit-frankcbliu.vercel.app',
-  author: '菜饼',
+  author: '菜饼同学',
 
   // open graph metadata (optional)
   description: '菜饼同学的技术博客',
@@ -17,10 +17,10 @@ module.exports = {
   socialImageSubtitle: 'Hello World! 👋',
 
   // social usernames (optional)
-  twitter: 'transitive_bs',
+  twitter: null,
   github: 'frankcbliu',
-  linkedin: 'fisch2',
   wechatPublic: '菜饼不菜',
+  notionPublic: 'https://frankcbliu.notion.site/6a76fdd9ec6d4ae2855aa790d620eec4',
 
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults

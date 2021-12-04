@@ -101,6 +101,7 @@ export function SimpleFeedback({ slug }) {
         .container {
           display: flex;
           align-items: baseline;
+          max-width: var(--notion-max-width);
         }
         .btn-feedback {
           margin: 0px 5px;
