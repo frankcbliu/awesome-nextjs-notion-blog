@@ -8,6 +8,8 @@
 
 基于 `Next.js`、`Notion`实现的个人博客系统
 
+
+- 修改`node_modules/`进行`patch`后，`vercel`需要重新`deploy`一下，否则会使用默认的依赖包，导致`patch`失败。
 > The perfect starter kit for building websites with Next.js and Notion.
 
 [![Build Status](https://travis-ci.com/transitive-bullshit/nextjs-notion-starter-kit.svg?branch=main)](https://travis-ci.com/transitive-bullshit/nextjs-notion-starter-kit) [![Prettier Code Formatting](https://img.shields.io/badge/code_style-prettier-brightgreen.svg)](https://prettier.io)
