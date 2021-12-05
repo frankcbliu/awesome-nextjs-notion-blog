@@ -110,17 +110,15 @@ index a263926..f79e5b3 100644
          case 'to_do':
              var isChecked = ((_10 = (_9 = (_8 = block.properties) === null || _8 === void 0 ? void 0 : _8.checked) === null || _9 === void 0 ? void 0 : _9[0]) === null || _10 === void 0 ? void 0 : _10[0]) === 'Yes';
 diff --git a/node_modules/react-notion-x/build/cjs/components/property.js b/node_modules/react-notion-x/build/cjs/components/property.js
-index 59eb8e1..0090557 100644
+index 59eb8e1..5ad276f 100644
 --- a/node_modules/react-notion-x/build/cjs/components/property.js
 +++ b/node_modules/react-notion-x/build/cjs/components/property.js
-@@ -165,8 +165,8 @@ var Property = function (_a) {
-                         }
+@@ -166,7 +166,7 @@ var Property = function (_a) {
                      }
                      break;
--                case 'created_time':
+                 case 'created_time':
 -                    content = date_fns_1.format(new Date(block.created_time), 'MMM d, YYY hh:mm aa');
-+                case 'created_time': // 创建时间的格式化
-+                    content = date_fns_1.format(new Date(block.created_time), 'YYYY-MM-dd hh:mm aa');
++                    content = date_fns_1.format(new Date(block.created_time), 'YYY hh:mm aa');
                      break;
                  case 'last_edited_time':
                      content = date_fns_1.format(new Date(block.last_edited_time), 'MMM d, YYY hh:mm aa');
@@ -240,3 +238,16 @@ index 0edd547..348f803 100644
          }
          case 'to_do':
              var isChecked = ((_10 = (_9 = (_8 = block.properties) === null || _8 === void 0 ? void 0 : _8.checked) === null || _9 === void 0 ? void 0 : _9[0]) === null || _10 === void 0 ? void 0 : _10[0]) === 'Yes';
+diff --git a/node_modules/react-notion-x/build/esm/components/property.js b/node_modules/react-notion-x/build/esm/components/property.js
+index 40abd8f..7acc256 100644
+--- a/node_modules/react-notion-x/build/esm/components/property.js
++++ b/node_modules/react-notion-x/build/esm/components/property.js
+@@ -160,7 +160,7 @@ export var Property = function (_a) {
+                     }
+                     break;
+                 case 'created_time':
+-                    content = format(new Date(block.created_time), 'MMM d, YYY hh:mm aa');
++                    content = format(new Date(block.created_time), 'YYY hh:mm aa');
+                     break;
+                 case 'last_edited_time':
+                     content = format(new Date(block.last_edited_time), 'MMM d, YYY hh:mm aa');
