@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import useSWR from 'swr'
 import format from 'comma-number'
 

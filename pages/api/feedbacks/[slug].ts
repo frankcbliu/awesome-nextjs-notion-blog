@@ -15,7 +15,7 @@ export default async function handler(req, res) {
 
     await db.db.runTransaction(async (tx) => {
       const feedback =
-        helpful === true ? 'helpful' : helpful === false ? 'not_helpful' : null
+        helpful === true ? 'helpful' : helpful === false ? 'unHelpful' : null
 
       const payload = {} as any
 
@@ -28,8 +28,8 @@ export default async function handler(req, res) {
 
       if (feedback === 'helpful') {
         payload.helpful = increment
-      } else if (feedback === 'not_helpful') {
-        payload.not_helpful = increment
+      } else if (feedback === 'unHelpful') {
+        payload.unHelpful = increment
       }
 
       if (prevState !== null) {
@@ -44,7 +44,7 @@ export default async function handler(req, res) {
 
     return res.status(200).json({
       helpful: data.helpful,
-      not_helpful: data.not_helpful
+      unHelpful: data.unHelpful
     })
   }
 
@@ -58,9 +58,9 @@ export default async function handler(req, res) {
         .get()
     ])
 
-    const { helpful, not_helpful } = snapshot.data() || {}
+    const { helpful, unHelpful } = snapshot.data() || {}
     const feedback = voter.data()?.feedback || null
 
-    return res.status(200).json({ helpful, not_helpful, feedback })
+    return res.status(200).json({ helpful, unHelpful, feedback })
   }
 }
