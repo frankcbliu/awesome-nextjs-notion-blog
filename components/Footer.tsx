@@ -11,7 +11,7 @@ export const Footer: React.FC<{
   pageId: string
   isDarkMode: boolean
   toggleDarkMode: () => void
-}> = ({ pageId, isDarkMode, toggleDarkMode }) => {
+}> = ({ isDarkMode, toggleDarkMode }) => {
   const [hasMounted, setHasMounted] = React.useState(false)
   const toggleDarkModeCb = React.useCallback(
     (e) => {

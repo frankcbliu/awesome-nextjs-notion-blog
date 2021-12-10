@@ -13,7 +13,7 @@ export function ClientRedirect({ url }) {
     <>
       <Head>
         <title>Redirecting {domain}…</title>
-        <meta http-equiv='refresh' content={`0; URL=${url}`} />
+        <meta httpEquiv='refresh' content={`0; URL=${url}`} />
         <link rel='canonical' href={`${url}`} />
       </Head>
       <div

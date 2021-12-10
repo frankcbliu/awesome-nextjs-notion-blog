@@ -1,9 +1,9 @@
-import { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import format from 'comma-number'
 
 export function SimpleFeedback({ slug }) {
   const [helpful, setHelpful] = useState(null)
-  const [count, setCount] = useState({ helpful: 0, not_helpful: 0 })
+  const [count, setCount] = useState({ helpful: 0, unHelpful: 0 })
 
   const uuidRef = useRef(null)
   const mountedRef = useRef(null)
@@ -26,13 +26,13 @@ export function SimpleFeedback({ slug }) {
     fetch(`/api/feedbacks/${slug}?uuid=${uuid}`)
       .then((res) => res.json())
       .then(
-        ({ helpful: countHelpful, not_helpful: countNotHelpful, feedback }) => {
+        ({ helpful: countHelpful, unHelpful: countNotHelpful, feedback }) => {
           if (!mountedRef.current) return
 
           const userFeedback =
             feedback === 'helpful'
               ? true
-              : feedback === 'not_helpful'
+              : feedback === 'unHelpful'
               ? false
               : null
 
@@ -42,9 +42,9 @@ export function SimpleFeedback({ slug }) {
 
           if (
             count.helpful !== countHelpful ||
-            count.not_helpful !== countNotHelpful
+            count.unHelpful !== countNotHelpful
           ) {
-            setCount({ helpful: countHelpful, not_helpful: countNotHelpful })
+            setCount({ helpful: countHelpful, unHelpful: countNotHelpful })
           }
         }
       )
@@ -56,7 +56,7 @@ export function SimpleFeedback({ slug }) {
 
     // Add feedback or remove
     const prevState =
-      helpful === true ? 'helpful' : helpful === false ? 'not_helpful' : null
+      helpful === true ? 'helpful' : helpful === false ? 'unHelpful' : null
     const newVal = helpful === isHelpful ? null : isHelpful
 
     setHelpful(newVal)
@@ -66,7 +66,7 @@ export function SimpleFeedback({ slug }) {
     if (newVal === true) {
       newCount.helpful++
     } else if (newVal === false) {
-      newCount.not_helpful++
+      newCount.unHelpful++
     }
 
     if (prevState !== null) {
@@ -87,7 +87,7 @@ export function SimpleFeedback({ slug }) {
         prevState: prevState
       })
     })
-      .then(async (res) => {
+      .then(async () => {
         await syncFeedback(uuidRef.current)
       })
       .finally(() => {
@@ -146,7 +146,7 @@ export function SimpleFeedback({ slug }) {
           >
             一般{' '}
             {helpful === null ||
-              (count.not_helpful > 0 && `(${format(count.not_helpful)})`)}
+              (count.unHelpful > 0 && `(${format(count.unHelpful)})`)}
           </button>
         </div>
       </div>

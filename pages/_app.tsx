@@ -37,8 +37,8 @@ import 'prismjs/components/prism-bash'
 import React from 'react'
 import { useRouter } from 'next/router'
 import { bootstrap } from 'lib/bootstrap-client'
-import { fathomId, fathomConfig } from 'lib/config'
-import * as Fathom from 'fathom-client'
+// import { fathomId, fathomConfig } from 'lib/config'
+// import * as Fathom from 'fathom-client'
 
 if (typeof window !== 'undefined') {
   bootstrap()
@@ -54,23 +54,22 @@ export default function App({ Component, pageProps }) {
   const router = useRouter()
 
   React.useEffect(() => {
-    if (fathomId) {
-      Fathom.load(fathomId, fathomConfig)
+    // if (fathomId) {
+    //   Fathom.load(fathomId, fathomConfig)
+    //  function onRouteChangeComplete() {
+    //    Fathom.trackPageview()
+    // }
+    // }
+    const handleRouteChange = (url: URL) => {
+      window.gtag('config', 'G-R331YKBG3V', {
+        page_path: url
+      })
+    }
 
-      // function onRouteChangeComplete() {
-      //   Fathom.trackPageview()
-      // }
-      const handleRouteChange = (url: URL) => {
-        window.gtag('config', 'G-R331YKBG3V', {
-          page_path: url
-        })
-      }
+    router.events.on('routeChangeComplete', handleRouteChange)
 
-      router.events.on('routeChangeComplete', handleRouteChange)
-
-      return () => {
-        router.events.off('routeChangeComplete', handleRouteChange)
-      }
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
     }
   }, [])
 
