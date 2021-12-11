@@ -1,6 +1,7 @@
 <p align="center">
-  ![image](https://user-images.githubusercontent.com/36353894/145680528-36eda2c0-609e-4cc6-9fc3-ff367cf2b55a.png)
 </p>
+![image](https://user-images.githubusercontent.com/36353894/145680528-36eda2c0-609e-4cc6-9fc3-ff367cf2b55a.png)
+
 
 # Next.js Notion Blog
 
