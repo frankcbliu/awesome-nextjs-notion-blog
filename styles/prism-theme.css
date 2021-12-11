@@ -118,3 +118,9 @@ pre[class*='language-'] > code {
   box-shadow: none !important;
   background: none !important;
 }
+
+pre[class*='language-'] > code ::after {
+  border-left: 0 none !important;
+  box-shadow: none !important;
+  background: none !important;
+}
