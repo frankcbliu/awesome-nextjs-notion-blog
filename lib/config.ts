@@ -166,6 +166,11 @@ export const firebaseCollectionFeedbacks = getEnv(
   'feedbacks'
 )
 
+export const googleAnalyticsTrackingID = getEnv(
+  'GOOGLE_ANALYTICS_TRACKING_ID',
+  ''
+)
+
 // this hack is necessary because vercel doesn't support secret files so we need to encode our google
 // credentials a base64-encoded string of the JSON-ified content
 function getGoogleApplicationCredentials() {

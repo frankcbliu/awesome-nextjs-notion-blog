@@ -1,6 +1,7 @@
 import React from 'react'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { IconContext } from 'react-icons'
+import { googleAnalyticsTrackingID } from '../lib/config'
 
 export default class MyDocument extends Document {
   render() {
@@ -10,7 +11,7 @@ export default class MyDocument extends Document {
           <Head>
             <script
               async
-              src='https://www.googletagmanager.com/gtag/js?id=G-R331YKBG3V'
+              src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsTrackingID}`}
             ></script>
 
             <script
@@ -20,7 +21,7 @@ export default class MyDocument extends Document {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-R331YKBG3V', {
+            gtag('config', '${googleAnalyticsTrackingID}', {
               page_path: window.location.pathname,
             });
           `
