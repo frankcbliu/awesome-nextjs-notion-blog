@@ -54,19 +54,21 @@ export const Footer: React.FC<{
             target='_blank'
             rel='noopener noreferrer'
           >
-            <span className={styles.tooltiptext}>@frankcbliu</span>
+            <span className={styles.tooltiptext}>@{config.github}</span>
             <SiGithub />
           </a>
         )}
-        {config.wechatPublic && (
+        {config.wechatPublicName && (
           <a
-            className={styles.wechatPublic}
-            href={`https://www.wechat.com/in/${config.wechatPublic}`}
+            className={styles.wechatPublicName}
+            href={`${config.wechatPublicURL}`}
             target='_blank'
             rel='noopener noreferrer'
           >
             <SiWechat />
-            <span className={styles.tooltiptext}>公众号: 菜饼不菜</span>
+            <span className={styles.tooltiptext}>
+              公众号: {config.wechatPublicName}
+            </span>
           </a>
         )}
         {config.notionPublic && (

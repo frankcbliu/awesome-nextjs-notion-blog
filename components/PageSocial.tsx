@@ -40,10 +40,10 @@ const socialLinks: SocialLink[] = [
     )
   },
 
-  config.wechatPublic && {
-    name: 'wechatPublic',
-    href: `https://www.wechat.com/in/${config.wechatPublic}`,
-    title: `公众号: ${config.wechatPublic}`,
+  config.wechatPublicName && {
+    name: 'wechatPublicName',
+    href: `${config.wechatPublicURL}`,
+    title: `公众号: ${config.wechatPublicName}`,
     icon: (
       <svg
         xmlns='http://www.w3.org/2000/svg'

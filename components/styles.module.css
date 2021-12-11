@@ -108,7 +108,7 @@
 }
 
 /* 微信 footbar 样式 */
-.wechatPublic:hover {
+.wechatPublicName:hover {
   color: #2BA245;
   
 }
@@ -136,7 +136,7 @@
 }
 
 .github:hover > .tooltiptext,
-.wechatPublic:hover > .tooltiptext,
+.wechatPublicName:hover > .tooltiptext,
 .notionPublic:hover > .tooltiptext {
   visibility: visible;
   width: 120px;

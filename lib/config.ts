@@ -55,7 +55,14 @@ export const showPageAsideSocials: boolean = getSiteConfig(
 // social accounts
 export const twitter: string | null = getSiteConfig('twitter', null)
 export const github: string | null = getSiteConfig('github', null)
-export const wechatPublic: string | null = getSiteConfig('wechatPublic', null)
+export const wechatPublicName: string | null = getSiteConfig(
+  'wechatPublicName',
+  null
+)
+export const wechatPublicURL: string | null = getSiteConfig(
+  'wechatPublicURL',
+  null
+)
 export const notionPublic: string | null = getSiteConfig('notionPublic', null)
 
 export const socialImageTitle: string | null = getSiteConfig(

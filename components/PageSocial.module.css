@@ -88,11 +88,11 @@
   border-color: #2795e9;
 }
 
-.wechatPublic .actionBgPane {
+.wechatPublicName .actionBgPane {
   background: #1AAD19;
 }
 
-.wechatPublic:hover {
+.wechatPublicName:hover {
   border-color: #2BA245;
 }
 
@@ -106,7 +106,7 @@
 
 .twitter:hover > .tooltiptext,
 .github:hover > .tooltiptext,
-.wechatPublic:hover > .tooltiptext {
+.wechatPublicName:hover > .tooltiptext {
   visibility: visible;
 }
 
