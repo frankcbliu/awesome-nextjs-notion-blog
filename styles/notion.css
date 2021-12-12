@@ -391,3 +391,19 @@
 .notion-aside-table-of-contents::-webkit-scrollbar {
   display: none;  /* Chrome Safari */
 }
+
+/* 自定义toggle 🐥 */
+
+.notion-toggle>summary::before {
+  content: "🐣 点击展开";
+}
+
+.notion-toggle[open]>summary::before{
+  content: "🐥 点击收起";
+}
+
+.notion-toggle>summary {
+  font-size: 20px !important;
+  color: var(--theme-color,#42b983);
+  font-weight: bold;
+}
