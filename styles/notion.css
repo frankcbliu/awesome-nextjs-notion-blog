@@ -413,3 +413,8 @@
   border-left: 4px solid var(--theme-color,#42b983);
   color: #858585;
 }
+
+/* fix code block's shadow */
+pre[class*=language-]:after, pre[class*=language-]:before {
+  box-shadow: none !important;
+}
