@@ -363,8 +363,10 @@
   padding-right: calc(min(12px, 8vw));
 }
 
-.notion-page-content-has-aside{
-  transform: translateX(calc(-1 * (100vw - var(--notion-max-width)) / 2));
+@media (min-width: 1300px) and (min-height: 300px) {
+  .notion-page-content-has-aside{
+    transform: translateX(calc(-1 * (100vw - var(--notion-max-width)) / 2));
+  }
 }
 
 .notion-aside {
