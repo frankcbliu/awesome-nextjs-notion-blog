@@ -418,3 +418,8 @@
 pre[class*=language-]:after, pre[class*=language-]:before {
   box-shadow: none !important;
 }
+
+/* fix simple table */
+.notion-table-row{
+  border-bottom: none !important;
+}
