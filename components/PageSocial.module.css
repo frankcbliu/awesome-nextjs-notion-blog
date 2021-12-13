@@ -9,7 +9,8 @@
 .action {
   position: relative;
   border-radius: 50%;
-  border: 2px solid var(--fg-color-6);
+  /* 改为 1px, 修复 hover 没有填充满的问题 */
+  border: 1px solid var(--fg-color-6);
   transition: all 300ms ease-out;
   width: 3.5em;
   height: 3.5em;
