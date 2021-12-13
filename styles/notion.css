@@ -407,3 +407,19 @@
   color: var(--theme-color,#42b983);
   font-weight: bold;
 }
+
+/* 修改 blockquote 样式 */
+.notion-quote{
+  border-left: 4px solid var(--theme-color,#42b983);
+  color: #858585;
+}
+
+/* fix code block's shadow */
+pre[class*=language-]:after, pre[class*=language-]:before {
+  box-shadow: none !important;
+}
+
+/* fix simple table */
+.notion-table-row{
+  border-bottom: none !important;
+}
