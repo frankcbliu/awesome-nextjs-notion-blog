@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import format from 'comma-number'
+import styles from './SimpleFeedback.module.css'
 
 export function SimpleFeedback({ slug }) {
   const [helpful, setHelpful] = useState(null)
@@ -97,57 +98,31 @@ export function SimpleFeedback({ slug }) {
 
   return (
     <>
-      <style jsx>{`
-        .container {
-          display: flex;
-          align-items: baseline;
-          max-width: var(--notion-max-width);
-        }
-        .btn-feedback {
-          margin: 0px 5px;
-          padding: 0;
-          background: none;
-          border: none;
-          cursor: pointer;
-          font-size: unset;
-        }
-        @media only screen and (max-width: 600px) {
-          .container {
-            flex-direction: column;
-          }
-          .btn-feedback:first-child {
-            margin-left: 0px;
-          }
-        }
-      `}</style>
-      <div className='container'>
-        <div>文章对你有帮助吗？</div>
-        <div>
-          <button
-            className='btn-feedback'
-            onClick={() => sendFeedback(true)}
-            style={{
-              color: helpful === true ? '#1b8cff' : 'unset',
-              textDecoration: helpful === true ? 'underline 2px' : undefined
-            }}
-          >
-            很赞{' '}
-            {helpful === null ||
-              (count.helpful > 0 && `(${format(count.helpful)})`)}
-          </button>
-          <span>·</span>
-          <button
-            className='btn-feedback'
+      <div className={styles.feedback}>
+        <div className={styles['feedback-title']}>你觉得这篇文章怎么样？</div>
+        <div
+          className={styles['feedback-btns']}
+          onClick={() => sendFeedback(true)}
+        >
+          <div className={styles['btn-item']}>
+            <img src='/酷.gif' alt='' width='60px' />
+            <div className={styles['btn-text']}>
+              酷{' '}
+              {helpful === null ||
+                (count.helpful > 0 && `(${format(count.helpful)})`)}
+            </div>
+          </div>
+          <div
+            className={styles['btn-item']}
             onClick={() => sendFeedback(false)}
-            style={{
-              color: helpful === false ? '#1b8cff' : 'unset',
-              textDecoration: helpful === false ? 'underline 2px' : undefined
-            }}
           >
-            一般{' '}
-            {helpful === null ||
-              (count.unHelpful > 0 && `(${format(count.unHelpful)})`)}
-          </button>
+            <img src='/加油.gif' alt='' width='60px' />
+            <div className={styles['btn-text']}>
+              加油{' '}
+              {helpful === null ||
+                (count.unHelpful > 0 && `(${format(count.unHelpful)})`)}
+            </div>
+          </div>
         </div>
       </div>
     </>

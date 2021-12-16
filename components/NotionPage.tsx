@@ -214,25 +214,23 @@ export const NotionPage: React.FC<types.PageProps> = ({
           <div
             style={{
               display: 'flex',
-              justifyContent: 'space-between',
               width: '100%',
               alignItems: 'center',
               marginTop: '2rem'
             }}
           >
-            <div>
-              <SimpleFeedback slug={slug} />
-            </div>
-            <div
-              style={{
-                marginLeft: 'auto',
-                display: 'flex',
-                alignItems: 'center'
-              }}
-            >
-              <FiBarChart2 style={{ marginRight: 3, marginBottom: 2 }} />
-              <ViewCounter slug={slug} />
-            </div>
+            <SimpleFeedback slug={slug} />
+          </div>
+
+          <div
+            style={{
+              marginLeft: 'auto',
+              display: 'flex',
+              alignItems: 'center'
+            }}
+          >
+            <FiBarChart2 style={{ marginRight: 3, marginBottom: 2 }} />
+            <ViewCounter slug={slug} />
           </div>
           <ReactUtterances
             repo={config.utterancesGitHubRepo}

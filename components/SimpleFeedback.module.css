@@ -1,0 +1,44 @@
+@media only screen and (max-width: 600px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .btn-feedback:first-child {
+    margin-left: 0px;
+  }
+}
+
+.feedback {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.feedback-title {
+  font-weight: bold;
+}
+
+.btn-item {
+  cursor: pointer;
+  text-align: center;
+}
+
+.feedback-btns {
+  margin: 5px 0 5px 0;
+  display: flex;
+}
+
+.btn-item:hover {
+  font-weight: bold;
+  transform: scale(1.1);
+  transition: 0.3s;
+}
+
+.btn-item:nth-child(1):hover {
+  color: #42b983;
+}
+
+.btn-item:nth-child(2):hover {
+  color: red;
+}
