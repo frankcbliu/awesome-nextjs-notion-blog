@@ -159,7 +159,7 @@ export const googleApplicationCredentials = getGoogleApplicationCredentials()
 
 export const firebaseCollectionImages = getEnv(
   'FIREBASE_COLLECTION_IMAGES',
-  defaultEnvValueForPreviewImageSupport
+  'images'
 )
 
 // 定义 google firebase 的文档集合
@@ -181,7 +181,7 @@ export const googleAnalyticsTrackingID = getEnv(
 // this hack is necessary because vercel doesn't support secret files so we need to encode our google
 // credentials a base64-encoded string of the JSON-ified content
 function getGoogleApplicationCredentials() {
-  if (!isPreviewImageSupportEnabled || !isServer) {
+  if (!isServer) {
     return null
   }
 

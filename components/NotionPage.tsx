@@ -169,7 +169,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   const pageUrl = getCanonicalPageUrl(site, recordMap)(pageId)
   const canonicalPageUrl = !config.isDev && pageUrl
-  const slug = new URL(pageUrl).pathname.substr(1).replace(`-${pageId}`, '')
+  // const slug = new URL(pageUrl).pathname.substr(1).replace(`-${pageId}`, '')
+  const slug = new URL(pageUrl).pathname.substring(1)
 
   // const isRootPage =
   //   parsePageId(block.id) === parsePageId(site.rootNotionPageId)
@@ -188,15 +189,15 @@ export const NotionPage: React.FC<types.PageProps> = ({
   // Use dynamic og image based on page title and icon
   if (!socialImage) {
     const text = router.asPath === '/' ? site.domain : encodeURIComponent(title)
-    let page_icon = (block.format as any).page_icon || 'NO_IMAGE'
-    if (page_icon.startsWith('http')) {
-      // Fallback to NO_IMAGE if page_icon is not emoji
-      page_icon = 'NO_IMAGE'
+    let pageIcon = (block.format as any).pageIcon || 'NO_IMAGE'
+    if (pageIcon.startsWith('http')) {
+      // Fallback to NO_IMAGE if pageIcon is not emoji
+      pageIcon = 'NO_IMAGE'
     } else {
       // Convert emoji to svg url
-      page_icon = getEmojiUrl(page_icon)
+      pageIcon = getEmojiUrl(pageIcon)
     }
-    socialImage = `https://og-image.wzulfikar.com/i/**${text}**.png?theme=dark&md=1&fontSize=125px&images=${page_icon}`
+    socialImage = `https://og-image.wzulfikar.com/i/**${text}**.png?theme=dark&md=1&fontSize=125px&images=${pageIcon}`
   }
 
   const socialDescription =
