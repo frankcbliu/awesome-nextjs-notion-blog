@@ -100,25 +100,53 @@ export function SimpleFeedback({ slug }) {
     <>
       <div className={styles.feedback}>
         <div className={styles['feedback-title']}>你觉得这篇文章怎么样？</div>
-        <div
-          className={styles['feedback-btns']}
-          onClick={() => sendFeedback(true)}
-        >
+        <div className={styles['feedback-btns']}>
+          <div
+            className={styles['btn-item']}
+            // onClick={() => sendFeedback(true)}
+          >
+            <img src='/feedback-awesome.gif' alt='' width='60px' />
+            <div className={styles['btn-text']}>
+              YYDS{' '}
+              {helpful === null ||
+                (count.helpful > 0 && `(${format(count.helpful)})`)}
+            </div>
+          </div>
           <div className={styles['btn-item']}>
-            <img src='/酷.gif' alt='' width='60px' />
+            <img src='/feedback-fingerheart.gif' alt='' width='60px' />
+            <div className={styles['btn-text']}>
+              比心{' '}
+              {helpful === null ||
+                (count.helpful > 0 && `(${format(count.helpful)})`)}
+            </div>
+          </div>
+          <div className={styles['btn-item']}>
+            <img src='/feedback-cool.gif' alt='' width='60px' />
             <div className={styles['btn-text']}>
               酷{' '}
               {helpful === null ||
                 (count.helpful > 0 && `(${format(count.helpful)})`)}
             </div>
           </div>
+
           <div
             className={styles['btn-item']}
-            onClick={() => sendFeedback(false)}
+            // onClick={() => sendFeedback(false)}
           >
-            <img src='/加油.gif' alt='' width='60px' />
+            <img src='/feedback-comeon.gif' alt='' width='60px' />
             <div className={styles['btn-text']}>
               加油{' '}
+              {helpful === null ||
+                (count.unHelpful > 0 && `(${format(count.unHelpful)})`)}
+            </div>
+          </div>
+          <div
+            className={styles['btn-item']}
+            // onClick={() => sendFeedback(false)}
+          >
+            <img src='/feedback-vegetabledog.gif' alt='' width='60px' />
+            <div className={styles['btn-text']}>
+              菜狗{' '}
               {helpful === null ||
                 (count.unHelpful > 0 && `(${format(count.unHelpful)})`)}
             </div>
