@@ -46,13 +46,16 @@ module.exports = {
   // any pages defined here will override their default URL paths
   // example:
   //
-  // pageUrlOverrides: {
-  //   '/foo': '067dd719a912471ea9a3ac10710e7fdf',
-  //   '/bar': '0be6efce9daf42688f65c76b89f8eb27'
-  // }
   pageUrlOverrides: {
     '/os': 'ff8a4877c04f42eda0d050547c117ea5',
-    // '/closure': 'C-6cfc812927c44a688e874d6212265b30'
+    '/os-introduction': '68390e1112d749debb748387a82ebd9f',
+    '/create-notion-blog': 'Notion-40362e4b8973491bbbc147237f1e9227',
+    '/create-vuepress-blog':'vuepress-github-pagegitee-e4c85fe845104c5aa004a19df445f29e',
+    '/c++': 'c-6cfc812927c44a688e874d6212265b30',
+    '/java': 'java-a0975c0ad4fb473ca8c2a803a7813a4d',
+    '/i-am-cai-bing-tong-xue': '8f65e44b7a5a47788fdcc8dde9522bfa',
+    '/redis':'redis-df0a05f97c9a462e83a3ecf5d0066578',
+    '/common-question': '8ea9f59839d04750b08fa7e13045ab08',
   },
   showPageAsideSocials: true,
 }
