@@ -36,8 +36,10 @@
 
 .notion-asset-wrapper video {
   height: 100%;
-  height: -moz-available; /* WebKit-based browsers will ignore this. */
-  height: -webkit-fill-available; /* Mozilla-based browsers will ignore this. */
+  height: -moz-available;
+  /* WebKit-based browsers will ignore this. */
+  height: -webkit-fill-available;
+  /* Mozilla-based browsers will ignore this. */
   height: fill-available;
   max-height: 80vh;
   max-width: 80vw;
@@ -56,9 +58,9 @@
 }
 
 @media only screen and (min-width: 600px) {
+
   /* Use object-fit contain if image width is not Notion's recommended width */
-  .lazy-image-wrapper img:not([width="1500"]):not([src*="//images.unsplash.com"])
-  {
+  .lazy-image-wrapper img:not([width="1500"]):not([src*="//images.unsplash.com"]) {
     object-fit: contain;
   }
 }
@@ -123,6 +125,7 @@
 
 /* only target safari */
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
+
   _::-webkit-full-page-media,
   _:future,
   :root,
@@ -364,7 +367,7 @@
 }
 
 @media (min-width: 1300px) and (min-height: 300px) {
-  .notion-page-content-has-aside{
+  .notion-page-content-has-aside {
     transform: translateX(calc(-1 * (100vw - var(--notion-max-width)) / 2));
   }
 }
@@ -389,7 +392,8 @@
 }
 
 .notion-aside-table-of-contents::-webkit-scrollbar {
-  display: none;  /* Chrome Safari */
+  display: none;
+  /* Chrome Safari */
 }
 
 /* 自定义toggle 🐥 */
@@ -398,19 +402,19 @@
   content: "🐣 点击展开";
 }
 
-.notion-toggle[open]>summary::before{
+.notion-toggle[open]>summary::before {
   content: "🐥 点击收起";
 }
 
 .notion-toggle>summary {
   font-size: 20px !important;
-  color: var(--theme-color,#42b983);
+  color: var(--theme-color, #42b983);
   font-weight: bold;
 }
 
 /* 修改 blockquote 样式 */
-.notion-quote{
-  border-left: 4px solid var(--theme-color,#42b983);
+.notion-quote {
+  border-left: 4px solid var(--theme-color, #42b983);
   color: #858585;
 }
 
@@ -420,6 +424,13 @@ pre[class*=language-]:after, pre[class*=language-]:before {
 }
 
 /* fix simple table */
-.notion-table-row{
+.notion-table-row {
   border-bottom: none !important;
+}
+
+/* page 404 back to index page text style */
+.page-404 {
+  color: #42b983;
+  font-weight: bold;
+  font-size: 25px;
 }
