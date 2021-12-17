@@ -3,8 +3,15 @@ import format from 'comma-number'
 import styles from './SimpleFeedback.module.css'
 
 export function SimpleFeedback({ slug }) {
-  const [helpful, setHelpful] = useState(null)
-  const [count, setCount] = useState({ helpful: 0, unHelpful: 0 })
+  // 初始化 feedback 变量
+  const [count, setCount] = useState({
+    awesome: 0,
+    fingerHeart: 0,
+    cool: 0,
+    comeOn: 0,
+    vegetableDog: 0
+  })
+  const [feedbacks, setFeedBacks] = useState(null)
 
   const uuidRef = useRef(null)
   const mountedRef = useRef(null)
@@ -26,52 +33,29 @@ export function SimpleFeedback({ slug }) {
   function syncFeedback(uuid) {
     fetch(`/api/feedbacks/${slug}?uuid=${uuid}`)
       .then((res) => res.json())
-      .then(
-        ({ helpful: countHelpful, unHelpful: countNotHelpful, feedback }) => {
-          if (!mountedRef.current) return
-
-          const userFeedback =
-            feedback === 'helpful'
-              ? true
-              : feedback === 'unHelpful'
-              ? false
-              : null
-
-          if (userFeedback !== helpful) {
-            setHelpful(userFeedback)
-          }
-
-          if (
-            count.helpful !== countHelpful ||
-            count.unHelpful !== countNotHelpful
-          ) {
-            setCount({ helpful: countHelpful, unHelpful: countNotHelpful })
-          }
-        }
-      )
+      .then(({ count: curCount, feedback: curFeedBack }) => {
+        if (!mountedRef.current) return
+        setCount(curCount || count)
+        setFeedBacks(curFeedBack || [])
+      })
   }
 
-  function sendFeedback(isHelpful) {
+  function sendFeedback(feedback) {
     // Do nothing if `sendFeedback` is still processing
     if (isDirtyRef.current) return
 
-    // Add feedback or remove
-    const prevState =
-      helpful === true ? 'helpful' : helpful === false ? 'unHelpful' : null
-    const newVal = helpful === isHelpful ? null : isHelpful
-
-    setHelpful(newVal)
-
     // Optimistic update
     const newCount = { ...count }
-    if (newVal === true) {
-      newCount.helpful++
-    } else if (newVal === false) {
-      newCount.unHelpful++
-    }
 
-    if (prevState !== null) {
-      newCount[prevState]--
+    const index = feedbacks.indexOf(feedback)
+    if (index !== -1 && newCount[feedback] > 0) {
+      // 删除已有的 feedback
+      feedbacks.splice(index, 1)
+      newCount[feedback]--
+    } else {
+      // 增加 feedback
+      newCount[feedback] = newCount[feedback] ? newCount[feedback] + 1 : 1
+      feedbacks.push(feedback)
     }
     setCount(newCount)
 
@@ -84,8 +68,8 @@ export function SimpleFeedback({ slug }) {
       },
       body: JSON.stringify({
         uuid: uuidRef.current,
-        helpful: newVal,
-        prevState: prevState
+        count: newCount,
+        feedback: feedbacks
       })
     })
       .then(async () => {
@@ -101,54 +85,59 @@ export function SimpleFeedback({ slug }) {
       <div className={styles.feedback}>
         <div className={styles['feedback-title']}>你觉得这篇文章怎么样？</div>
         <div className={styles['feedback-btns']}>
+          {/* awesome */}
           <div
             className={styles['btn-item']}
-            // onClick={() => sendFeedback(true)}
+            onClick={() => sendFeedback('awesome')}
           >
             <img src='/feedback-awesome.gif' alt='' width='60px' />
             <div className={styles['btn-text']}>
               YYDS{' '}
-              {helpful === null ||
-                (count.helpful > 0 && `(${format(count.helpful)})`)}
+              {!count || (count.awesome > 0 && `(${format(count.awesome)})`)}
             </div>
           </div>
-          <div className={styles['btn-item']}>
+          {/* fingerheart */}
+          <div
+            className={styles['btn-item']}
+            onClick={() => sendFeedback('fingerHeart')}
+          >
             <img src='/feedback-fingerheart.gif' alt='' width='60px' />
             <div className={styles['btn-text']}>
               比心{' '}
-              {helpful === null ||
-                (count.helpful > 0 && `(${format(count.helpful)})`)}
+              {!count ||
+                (count.fingerHeart > 0 && `(${format(count.fingerHeart)})`)}
             </div>
           </div>
-          <div className={styles['btn-item']}>
-            <img src='/feedback-cool.gif' alt='' width='60px' />
-            <div className={styles['btn-text']}>
-              酷{' '}
-              {helpful === null ||
-                (count.helpful > 0 && `(${format(count.helpful)})`)}
-            </div>
-          </div>
-
+          {/* cool */}
           <div
             className={styles['btn-item']}
-            // onClick={() => sendFeedback(false)}
+            onClick={() => sendFeedback('cool')}
+          >
+            <img src='/feedback-cool.gif' alt='' width='60px' />
+            <div className={styles['btn-text']}>
+              酷 {!count || (count.cool > 0 && `(${format(count.cool)})`)}
+            </div>
+          </div>
+          {/* comeon */}
+          <div
+            className={styles['btn-item']}
+            onClick={() => sendFeedback('comeOn')}
           >
             <img src='/feedback-comeon.gif' alt='' width='60px' />
             <div className={styles['btn-text']}>
-              加油{' '}
-              {helpful === null ||
-                (count.unHelpful > 0 && `(${format(count.unHelpful)})`)}
+              加油 {!count || (count.comeOn > 0 && `(${format(count.comeOn)})`)}
             </div>
           </div>
+          {/* vegetabledog */}
           <div
             className={styles['btn-item']}
-            // onClick={() => sendFeedback(false)}
+            onClick={() => sendFeedback('vegetableDog')}
           >
             <img src='/feedback-vegetabledog.gif' alt='' width='60px' />
             <div className={styles['btn-text']}>
               菜狗{' '}
-              {helpful === null ||
-                (count.unHelpful > 0 && `(${format(count.unHelpful)})`)}
+              {!count ||
+                (count.vegetableDog > 0 && `(${format(count.vegetableDog)})`)}
             </div>
           </div>
         </div>
