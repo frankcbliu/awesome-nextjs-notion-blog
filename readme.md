@@ -55,3 +55,5 @@ NOTE: if you have multiple pages in your workspace with the same slugified name,
 MIT © 
 
 This project based on [transitivebullsh.it](https://transitivebullsh.it).
+
+Feedback 部分使用的表情包版权来源于 [ISUX](https://isux.tencent.com/articles/HD_QQ_emoticon.html)
