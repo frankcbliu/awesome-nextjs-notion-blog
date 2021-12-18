@@ -45,7 +45,7 @@
 
 .footer {
   width: 100%;
-  max-width: 1100px;
+  max-width: 1000px;
   margin: auto auto 15px;
   padding: 8px;
 
@@ -60,6 +60,11 @@
   padding: 0.5em;
   max-width: 40vw;
   width: 100%;
+}
+
+.copyright > svg{
+  position: relative;
+  top: 1.5px;
 }
 
 .settings {

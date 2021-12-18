@@ -12,8 +12,8 @@ module.exports = {
   author: '菜饼同学',
 
   // open graph metadata (optional)
-  description: '菜饼同学的技术博客',
-  socialImageTitle: 'Transitive Bullshit',
+  description: '菜饼同学: 专注硬核技术，校招打法，个人认知体系成长',
+  socialImageTitle: '菜饼同学',
   socialImageSubtitle: 'Hello World! 👋',
 
   // social usernames (optional)
@@ -42,6 +42,9 @@ module.exports = {
   // variables specified in .env.example
   isPreviewImageSupportEnabled: false,
 
+  // set null to remove from year
+  copyRightFromYear: 2019,
+
   // map of notion page IDs to URL paths (optional)
   // any pages defined here will override their default URL paths
   // example:
@@ -58,4 +61,5 @@ module.exports = {
     '/common-question': '8ea9f59839d04750b08fa7e13045ab08',
   },
   showPageAsideSocials: true,
+
 }

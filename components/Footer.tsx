@@ -1,8 +1,10 @@
 import * as React from 'react'
 import { SiGithub, SiWechat, SiNotion } from 'react-icons/si'
 import { IoSunnyOutline, IoMoonSharp } from 'react-icons/io5'
+import { RiCopyrightFill } from 'react-icons/ri'
 import * as config from 'lib/config'
-
+import { rootNotionPageId, copyRightFromYear } from 'site.config'
+import { ViewCounter } from './ViewCounter'
 import styles from './styles.module.css'
 
 // TODO: merge the data and icons from PageSocial with the social links in Footer
@@ -11,7 +13,7 @@ export const Footer: React.FC<{
   pageId: string
   isDarkMode: boolean
   toggleDarkMode: () => void
-}> = ({ isDarkMode, toggleDarkMode }) => {
+}> = ({ pageId, isDarkMode, toggleDarkMode }) => {
   const [hasMounted, setHasMounted] = React.useState(false)
   const toggleDarkModeCb = React.useCallback(
     (e) => {
@@ -20,6 +22,7 @@ export const Footer: React.FC<{
     },
     [toggleDarkMode]
   )
+  const isRootPage = pageId === rootNotionPageId
 
   React.useEffect(() => {
     setHasMounted(true)
@@ -30,7 +33,10 @@ export const Footer: React.FC<{
   return (
     <footer className={styles.footer}>
       <div className={styles.copyright}>
-        {new Date().getFullYear()} All rights reserved · {author + ' '}
+        <RiCopyrightFill /> {copyRightFromYear ? copyRightFromYear + ' - ' : ''}
+        {new Date().getFullYear()} {'· ' + author + ' '}
+        {isRootPage ? '· ' : ''}
+        {isRootPage ? <ViewCounter slug={pageId} /> : ''}
       </div>
 
       {hasMounted ? (
