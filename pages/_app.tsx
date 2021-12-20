@@ -29,10 +29,14 @@ import 'styles/prism-theme.css'
 // here we're bringing in any languages we want to support for
 // syntax highlighting via Notion's Code block
 import 'prismjs'
-import 'prismjs/components/prism-markup'
-import 'prismjs/components/prism-javascript'
-import 'prismjs/components/prism-typescript'
 import 'prismjs/components/prism-bash'
+import 'prismjs/components/prism-c'
+import 'prismjs/components/prism-cpp'
+import 'prismjs/components/prism-go'
+import 'prismjs/components/prism-java'
+import 'prismjs/components/prism-javascript'
+import 'prismjs/components/prism-markup'
+import 'prismjs/components/prism-python'
 
 import React from 'react'
 import { useRouter } from 'next/router'
