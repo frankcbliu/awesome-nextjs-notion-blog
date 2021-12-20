@@ -59,6 +59,13 @@ module.exports = {
     '/i-am-cai-bing-tong-xue': '8f65e44b7a5a47788fdcc8dde9522bfa',
     '/redis':'redis-df0a05f97c9a462e83a3ecf5d0066578',
     '/common-question': '8ea9f59839d04750b08fa7e13045ab08',
+    '/algorithm-sort': '7f7769466b5847dab94716dc0d9c1ac4',
+    '/algorithm-sort-js' : 'JavaScript-f5b50f39a66645ec97dcd409497ed2a9',
+    '/algorithm-binary-tree-traversal' :'07df0ddf43664a758fb4725070b71854',
+    '/network': '926b875211b44f978d39200f8d39ef1d',
+    '/database': '337b1694b9344af9a424136b87827ad3',
+    '/advanced-algorithm': '854a54c0567944488842e3f01faf6ab3',
+    '/frontend': '83dc1ec0083a4bdfbe7d3ac6a5b07664'
   },
   showPageAsideSocials: true,
 
