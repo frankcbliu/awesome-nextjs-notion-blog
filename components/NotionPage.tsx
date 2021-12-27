@@ -189,7 +189,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
   // Use dynamic og image based on page title and icon
   if (!socialImage) {
     const text = router.asPath === '/' ? site.domain : encodeURIComponent(title)
-    let pageIcon = (block.format as any).pageIcon || 'NO_IMAGE'
+    let pageIcon = (block.format as any)?.pageIcon || 'NO_IMAGE'
     if (pageIcon.startsWith('http')) {
       // Fallback to NO_IMAGE if pageIcon is not emoji
       pageIcon = 'NO_IMAGE'
