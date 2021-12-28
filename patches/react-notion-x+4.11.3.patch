@@ -1,6 +1,6 @@
 diff --git a/node_modules/react-notion-x/.DS_Store b/node_modules/react-notion-x/.DS_Store
 new file mode 100644
-index 0000000..12961bd
+index 0000000..bc3a01c
 Binary files /dev/null and b/node_modules/react-notion-x/.DS_Store differ
 diff --git a/node_modules/react-notion-x/build/cjs/block.js b/node_modules/react-notion-x/build/cjs/block.js
 index a263926..34b2f6f 100644
@@ -14005,7 +14005,7 @@ index 0697bfc..81e68ed 100644
 +{"version":3,"file":"utils.js","sourceRoot":"","sources":["../../src/utils.ts"],"names":[],"mappings":"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"}
 \ No newline at end of file
 diff --git a/node_modules/react-notion-x/src/styles.css b/node_modules/react-notion-x/src/styles.css
-index 310efac..29bd1c4 100644
+index 310efac..e497c67 100644
 --- a/node_modules/react-notion-x/src/styles.css
 +++ b/node_modules/react-notion-x/src/styles.css
 @@ -117,7 +117,7 @@
@@ -14304,18 +14304,20 @@ index 310efac..29bd1c4 100644
    align-self: center;
    overflow: auto hidden;
  }
-@@ -1220,6 +1261,11 @@ svg.notion-page-icon {
-   margin: 0 6px 6px 0;
+@@ -1217,7 +1258,12 @@ svg.notion-page-icon {
  }
  
+ .notion-property-multi_select-item {
+-  margin: 0 6px 6px 0;
++  margin: 0 3px;
++}
++
 +.notion-table-cell .notion-property-multi_select{
 +  height: 100%;
 +  align-items: center;
-+}
-+
- .notion-collection-card .notion-property-multi_select-item {
-   margin: 0 6px 0 0;
  }
+ 
+ .notion-collection-card .notion-property-multi_select-item {
 @@ -1548,15 +1594,11 @@ svg.notion-page-icon {
    height: 148px;
  }
@@ -14354,7 +14356,16 @@ index 310efac..29bd1c4 100644
    border-bottom: 1px solid;
  }
  
-@@ -1932,9 +1972,7 @@ svg.notion-page-icon {
+@@ -1889,6 +1929,8 @@ svg.notion-page-icon {
+   padding: 4px 0 8px;
+   border-bottom: 1px solid var(--fg-color-0);
+   margin-bottom: 1em;
++  display: flex;
++  justify-content: center;
+ }
+ 
+ .notion-collection-row-body {
+@@ -1932,9 +1974,7 @@ svg.notion-page-icon {
    border-bottom: 0 none;
  }
  
@@ -14365,7 +14376,7 @@ index 310efac..29bd1c4 100644
    border-bottom: 1px solid;
  }
  
-@@ -1965,9 +2003,9 @@ svg.notion-page-icon {
+@@ -1965,9 +2005,9 @@ svg.notion-page-icon {
    padding-right: 0 !important;
  }
  
@@ -14377,7 +14388,7 @@ index 310efac..29bd1c4 100644
  .notion-column .notion-board {
    width: 100% !important;
    max-width: 100% !important;
-@@ -2088,8 +2126,8 @@ svg.notion-page-icon {
+@@ -2088,8 +2128,8 @@ svg.notion-page-icon {
    padding-right: 0 !important;
  }
  
@@ -14388,7 +14399,7 @@ index 310efac..29bd1c4 100644
    width: 100% !important;
  }
  
-@@ -2377,3 +2415,43 @@ svg.notion-page-icon {
+@@ -2377,3 +2417,43 @@ svg.notion-page-icon {
  .notion-sync-block {
    width: 100%;
  }
