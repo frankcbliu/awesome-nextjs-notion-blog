@@ -245,7 +245,8 @@
 .notion-brown_background,
 .notion-gray_background {
   padding: 0 0.5rem;
-  margin: 0 -0.5rem 0 -0.25rem;
+  /* margin: 0 -0.5rem 0 -0.25rem; */
+  margin: 5px 8px;
   border-radius: 0.5rem;
   border-bottom-left-radius: 0.125rem;
   box-decoration-break: clone;
