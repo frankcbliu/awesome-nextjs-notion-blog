@@ -65,8 +65,12 @@ module.exports = {
     '/network': '926b875211b44f978d39200f8d39ef1d',
     '/database': '337b1694b9344af9a424136b87827ad3',
     '/advanced-algorithm': '854a54c0567944488842e3f01faf6ab3',
-    '/frontend': '83dc1ec0083a4bdfbe7d3ac6a5b07664'
+    '/frontend': '83dc1ec0083a4bdfbe7d3ac6a5b07664',
+    '/post-list': '651765de6a0f4a729f9186f26381aef3'
   },
   showPageAsideSocials: true,
-
+  footCounterList: [
+    '6a76fdd9ec6d4ae2855aa790d620eec4',
+    '651765de-6a0f-4a72-9f91-86f26381aef3'
+  ]
 }

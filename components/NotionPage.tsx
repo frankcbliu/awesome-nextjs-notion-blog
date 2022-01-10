@@ -21,7 +21,7 @@ import { getBlockTitle } from 'notion-utils'
 import { mapPageUrl, getCanonicalPageUrl } from 'lib/map-page-url'
 import { mapNotionImageUrl } from 'lib/map-image-url'
 import { getPageDescription } from 'lib/get-page-description'
-import { getPageTweet } from 'lib/get-page-tweet'
+// import { getPageTweet } from 'lib/get-page-tweet'
 import { searchNotion } from 'lib/search-notion'
 import * as types from 'lib/types'
 import * as config from 'lib/config'
@@ -31,7 +31,7 @@ import { CustomFont } from './CustomFont'
 import { Loading } from './Loading'
 import { Page404 } from './Page404'
 import { PageHead } from './PageHead'
-import { PageActions } from './PageActions'
+// import { PageActions } from './PageActions'
 import { Footer } from './Footer'
 import { PageSocial } from './PageSocial'
 import { GitHubShareButton } from './GitHubShareButton'
@@ -101,13 +101,13 @@ export const NotionPage: React.FC<types.PageProps> = ({
     breadcrumb.addEventListener('click', () => {
       if (window.scrollY === 0) {
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
-        ;(breadcrumb as any).setAttribute('title', 'Scroll to top')
+          ; (breadcrumb as any).setAttribute('title', 'Scroll to top')
       } else {
         window.scrollTo({ top: 0, behavior: 'smooth' })
-        ;(breadcrumb as any).setAttribute('title', 'Scroll to bottom')
+          ; (breadcrumb as any).setAttribute('title', 'Scroll to bottom')
       }
     })
-    ;(breadcrumb as any).style.cursor = 'pointer'
+      ; (breadcrumb as any).style.cursor = 'pointer'
 
     // Update background color for cover image
     matchBackgroundColorWithCover()
@@ -178,6 +178,9 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const isBlogPost =
     block.type === 'page' &&
     (block.parent_table === 'block' || block.parent_table === 'collection')
+
+  const needAside = block.type !== 'collection_view_page'
+
   const showTableOfContents = !!isBlogPost
   const minTableOfContentsItems = 3
 
@@ -243,11 +246,11 @@ export const NotionPage: React.FC<types.PageProps> = ({
       )
     }
 
-    const tweet = getPageTweet(block, recordMap)
-    if (tweet) {
-      pageAside = <PageActions tweet={tweet} />
-    }
-  } else {
+    // const tweet = getPageTweet(block, recordMap)
+    // if (tweet) {
+    //   pageAside = <PageActions tweet={tweet} />
+    // }
+  } else if (needAside) {
     if (config.showPageAsideSocials) {
       pageAside = <PageSocial />
     }
