@@ -134,18 +134,18 @@ export const api = {
 
 // ----------------------------------------------------------------------------
 
-export const fathomId = isDev ? null : process.env.NEXT_PUBLIC_FATHOM_ID
+// export const fathomId = isDev ? null : process.env.NEXT_PUBLIC_FATHOM_ID
 
-const fathomDomain = isDev ? null : process.env.NEXT_PUBLIC_FATHOM_DOMAIN
+// const fathomDomain = isDev ? null : process.env.NEXT_PUBLIC_FATHOM_DOMAIN
 
-export const fathomConfig = fathomId
-  ? {
-      url: fathomDomain
-        ? `https://${fathomDomain}/script.js`
-        : 'https://cdn.usefathom.com/script.js',
-      excludedDomains: ['localhost', 'localhost:3000']
-    }
-  : undefined
+// export const fathomConfig = fathomId
+//   ? {
+//       url: fathomDomain
+//         ? `https://${fathomDomain}/script.js`
+//         : 'https://cdn.usefathom.com/script.js',
+//       excludedDomains: ['localhost', 'localhost:3000']
+//     }
+//   : undefined
 
 const defaultEnvValueForPreviewImageSupport =
   isPreviewImageSupportEnabled && isServer ? undefined : null
