@@ -1,6 +1,6 @@
 module.exports = {
   // where it all starts -- the site's root Notion page (required)
-  rootNotionPageId: '9f1e0dfab0a74c14955a2078f2e638eb',
+  rootNotionPageId: 'FQJun-s-Blog-9f1e0dfab0a74c14955a2078f2e638eb',
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
@@ -70,7 +70,7 @@ module.exports = {
   },
   showPageAsideSocials: true,
   footCounterList: [
-    // '9f1e0dfab0a74c14955a2078f2e638eb',
-    // '0a134da6-916f-4e46-979d-2c675f9acdb9'
+    // '6a76fdd9ec6d4ae2855aa790d620eec4',
+    // '651765de-6a0f-4a72-9f91-86f26381aef3'
   ]
 }
