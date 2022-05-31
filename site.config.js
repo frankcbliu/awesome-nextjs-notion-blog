@@ -53,12 +53,13 @@ module.exports = {
     '/os': 'ff8a4877c04f42eda0d050547c117ea5',
     '/os-introduction': '68390e1112d749debb748387a82ebd9f',
     '/create-notion-blog': 'Notion-40362e4b8973491bbbc147237f1e9227',
-    '/create-vuepress-blog':'vuepress-github-pagegitee-e4c85fe845104c5aa004a19df445f29e',
+    '/create-vuepress-blog': 'vuepress-github-pagegitee-e4c85fe845104c5aa004a19df445f29e',
     '/c++': 'c-6cfc812927c44a688e874d6212265b30',
     '/java': 'java-a0975c0ad4fb473ca8c2a803a7813a4d',
     '/i-am-cai-bing-tong-xue': '8f65e44b7a5a47788fdcc8dde9522bfa',
-    '/redis':'redis-df0a05f97c9a462e83a3ecf5d0066578',
+    '/redis': 'redis-df0a05f97c9a462e83a3ecf5d0066578',
     '/common-question': '8ea9f59839d04750b08fa7e13045ab08',
+    '/how-git-work': 'Git-c3260ebf0ad04d9d8d2081bf1f3bf2b8'
   },
   showPageAsideSocials: true,
 
