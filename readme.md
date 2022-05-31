@@ -9,7 +9,7 @@
 
 本项目基于 [nextjs-notion-starter-kit](https://github.com/transitive-bullshit/nextjs-notion-starter-kit) 项目修改而成。
 
-完整教程见：[如何用Notion搭建自己的博客](https://nextjs-notion-starter-kit-frankcbliu.vercel.app/notion)
+完整教程见：[如何用Notion搭建自己的博客](https://szufrank.top/create-notion-blog)
 
 ## New Features
 

@@ -3,7 +3,7 @@ import { SiGithub, SiWechat, SiNotion } from 'react-icons/si'
 import { IoSunnyOutline, IoMoonSharp } from 'react-icons/io5'
 import { RiCopyrightFill } from 'react-icons/ri'
 import * as config from 'lib/config'
-import { rootNotionPageId, copyRightFromYear } from 'site.config'
+import { footCounterList, copyRightFromYear } from 'site.config'
 import { ViewCounter } from './ViewCounter'
 import styles from './styles.module.css'
 
@@ -22,7 +22,8 @@ export const Footer: React.FC<{
     },
     [toggleDarkMode]
   )
-  const isRootPage = pageId === rootNotionPageId
+  // const isRootPage = pageId === rootNotionPageId
+  const needFootCounter = footCounterList.indexOf(pageId) !== -1
 
   React.useEffect(() => {
     setHasMounted(true)
@@ -35,8 +36,8 @@ export const Footer: React.FC<{
       <div className={styles.copyright}>
         <RiCopyrightFill /> {copyRightFromYear ? copyRightFromYear + ' - ' : ''}
         {new Date().getFullYear()} {'· ' + author + ' '}
-        {isRootPage ? '· ' : ''}
-        {isRootPage ? <ViewCounter slug={pageId} /> : ''}
+        {needFootCounter ? '· ' : ''}
+        {needFootCounter ? <ViewCounter slug={pageId} /> : ''}
       </div>
 
       {hasMounted ? (
