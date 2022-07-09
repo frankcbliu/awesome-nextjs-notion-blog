@@ -67,7 +67,8 @@ module.exports = {
     '/database': '337b1694b9344af9a424136b87827ad3',
     '/advanced-algorithm': '854a54c0567944488842e3f01faf6ab3',
     '/frontend': '83dc1ec0083a4bdfbe7d3ac6a5b07664',
-    '/post-list': '651765de6a0f4a729f9186f26381aef3'
+    '/post-list': '651765de6a0f4a729f9186f26381aef3',
+    '/one-year-review': 'c6461186bea149eb9a83c0d7284f2921',
   },
   showPageAsideSocials: true,
   footCounterList: [
