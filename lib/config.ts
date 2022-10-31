@@ -148,7 +148,7 @@ export const api = {
 //   : undefined
 
 const defaultEnvValueForPreviewImageSupport =
-  isPreviewImageSupportEnabled && isServer ? undefined : null
+  isPreviewImageSupportEnabled && isServer ? undefined : ''
 
 export const googleProjectId = getEnv(
   'GCLOUD_PROJECT',
@@ -181,7 +181,7 @@ export const googleAnalyticsTrackingID = getEnv(
 // this hack is necessary because vercel doesn't support secret files so we need to encode our google
 // credentials a base64-encoded string of the JSON-ified content
 function getGoogleApplicationCredentials() {
-  if (!isServer) {
+  if (!isPreviewImageSupportEnabled || !isServer) {
     return null
   }
 
