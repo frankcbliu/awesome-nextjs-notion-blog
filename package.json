@@ -27,7 +27,7 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
-    "@google-cloud/firestore": "^4.9.1",
+    "@google-cloud/firestore": "^6.9.4",
     "chrome-aws-lambda": "^5.5.0",
     "classnames": "^2.2.6",
     "colorthief": "^2.3.2",
