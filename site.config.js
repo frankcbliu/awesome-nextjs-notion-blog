@@ -17,7 +17,7 @@ module.exports = {
   socialImageSubtitle: 'Hello World! 👋',
 
   // social usernames (optional)
-  twitter: YunziWang,
+  twitter: 'YunziWang',
   github: 'wangyunzi',
   wechatPublicName: '王云子',
   // wechatPublicURL: 'https://mp.weixin.qq.com/s?__biz=MzkxMzIyOTI1Mg==&mid=2247486027&idx=1&sn=2840f0b8cfdc982b9095dd18ec9892e5',
@@ -31,7 +31,7 @@ module.exports = {
 
   // image CDN host to proxy all image requests through (optional)
   // NOTE: this requires you to set up an external image proxy
-  imageCDNHost: 'https://blog.wangyunzi.com',
+  // imageCDNHost: 'https://blog.wangyunzi.com',
 
   // Utteranc.es comments via GitHub issue comments (optional)
   utterancesGitHubRepo: 'frankcbliu/awesome-nextjs-notion-blog',
@@ -40,7 +40,7 @@ module.exports = {
   // whether or not to enable support for LQIP preview images (optional)
   // NOTE: this requires you to set up Google Firebase and add the environment
   // variables specified in .env.example
-  isPreviewImageSupportEnabled: true,
+  isPreviewImageSupportEnabled: false,
 
   // set null to remove from year
   copyRightFromYear: 2022,
