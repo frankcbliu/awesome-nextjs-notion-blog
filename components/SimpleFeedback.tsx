@@ -42,7 +42,7 @@ export function SimpleFeedback({ slug }) {
 
   function sendFeedback(feedback) {
     // Do nothing if `sendFeedback` is still processing
-    if (isDirtyRef.current) return
+    if (isDirtyRef.current || !feedbacks) return
 
     // Optimistic update
     const newCount = { ...count }

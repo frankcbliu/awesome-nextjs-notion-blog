@@ -1,14 +1,17 @@
 // import * as firestore from '@google-cloud/firestore'
+import { NextApiRequest, NextApiResponse } from 'next'
 import * as db from '@lib/db'
 
-export default async function handler(req, res) {
+export default async (
+  req: NextApiRequest,
+  res: NextApiResponse
+): Promise<void> => {
   if (req.method === 'POST') {
     const { uuid, count, feedback } = req.body
 
     // const increment = firestore.FieldValue.increment(1)
     // const decrement = firestore.FieldValue.increment(-1)
-
-    const slugRef = db.feedbacks.doc(req.query.slug)
+    const slugRef = db.feedbacks.doc(req.query.slug.toString())
     const voterRef = db.db
       .collection(`/${db.collections.feedbacks}/${req.query.slug}/voters`)
       .doc(uuid)
@@ -34,10 +37,10 @@ export default async function handler(req, res) {
   if (req.method === 'GET') {
     const { slug, uuid } = req.query
     const [snapshot, voter] = await Promise.all([
-      db.feedbacks.doc(slug).get(),
+      db.feedbacks.doc(slug.toString()).get(),
       db.db
         .collection(`/${db.collections.feedbacks}/${req.query.slug}/voters`)
-        .doc(uuid)
+        .doc(uuid.toString())
         .get()
     ])
 

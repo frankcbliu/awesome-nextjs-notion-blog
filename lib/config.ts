@@ -181,7 +181,7 @@ export const googleAnalyticsTrackingID = getEnv(
 // this hack is necessary because vercel doesn't support secret files so we need to encode our google
 // credentials a base64-encoded string of the JSON-ified content
 function getGoogleApplicationCredentials() {
-  if (!isPreviewImageSupportEnabled || !isServer) {
+  if (googleProjectId.length <= 0 || !isServer) {
     return null
   }
 

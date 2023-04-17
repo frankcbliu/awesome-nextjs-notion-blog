@@ -12,13 +12,15 @@ export const collections = {
   feedbacks: config.firebaseCollectionFeedbacks
 }
 
-db = new firestore.Firestore({
-  projectId: config.googleProjectId,
-  credentials: config.googleApplicationCredentials
-})
+if (config.googleProjectId.length > 0) {
+  db = new firestore.Firestore({
+    projectId: config.googleProjectId,
+    credentials: config.googleApplicationCredentials
+  })
 
-if (config.isPreviewImageSupportEnabled) {
-  images = db.collection(collections.images)
+  if (config.isPreviewImageSupportEnabled) {
+    images = db.collection(collections.images)
+  }
+  pageviews = db.collection(collections.pageviews)
+  feedbacks = db.collection(collections.feedbacks)
 }
-pageviews = db.collection(collections.pageviews)
-feedbacks = db.collection(collections.feedbacks)
